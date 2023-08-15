@@ -1,0 +1,100 @@
+[
+  {
+    "objectID": "choose_cf.html#iptw",
+    "href": "choose_cf.html#iptw",
+    "title": "Choosing a counterfactual analysis approach",
+    "section": "IPTW",
+    "text": "IPTW"
+  },
+  {
+    "objectID": "choose_cf.html#nbp",
+    "href": "choose_cf.html#nbp",
+    "title": "Choosing a counterfactual analysis approach",
+    "section": "NBP",
+    "text": "NBP"
+  },
+  {
+    "objectID": "csstests.html",
+    "href": "csstests.html",
+    "title": "Tests",
+    "section": "",
+    "text": "learning obj\n\n\nimportant\n\n\nsticky\n\n\n\n\n\nr tips\n\n\nstatbox\n\n\ninterpretation interpretation interpretation\n\n\nQuestion\n\n\nquestion\nwhat is your name?\nwhat is your favourite colour?\n\n\n\n\n Solution \n\n\nsolution\nhello\n\n2+2\n\n[1] 4\n\n\n\n\n\n\n Optional hello my optional friend\n\n\nit’s nice to see you again\n\n\n\n\n\nthis is not a panel\n\n\nthis is a panel\n\n\nthis is a panel"
+  },
+  {
+    "objectID": "howto_digicat.html#how-to-use-digicat",
+    "href": "howto_digicat.html#how-to-use-digicat",
+    "title": "The DigiCAT Tool",
+    "section": "How to use DigiCAT",
+    "text": "How to use DigiCAT"
+  },
+  {
+    "objectID": "howto_digicat.html#involving-lived-experience-expertise-alongside-the-tool",
+    "href": "howto_digicat.html#involving-lived-experience-expertise-alongside-the-tool",
+    "title": "The DigiCAT Tool",
+    "section": "Involving Lived Experience Expertise alongside the Tool",
+    "text": "Involving Lived Experience Expertise alongside the Tool"
+  },
+  {
+    "objectID": "index.html#how-to-engage-with-tutorials",
+    "href": "index.html#how-to-engage-with-tutorials",
+    "title": "DigiCAT Tutorial Pages",
+    "section": "How to engage with tutorials",
+    "text": "How to engage with tutorials"
+  },
+  {
+    "objectID": "intro_cf.html#what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis",
+    "href": "intro_cf.html#what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis",
+    "title": "Introduction to counterfactual analysis",
+    "section": "What kind of research questions can be answered with counterfactual analysis?",
+    "text": "What kind of research questions can be answered with counterfactual analysis?"
+  },
+  {
+    "objectID": "intro_cf.html#what-counterfactual-analysis-approaches-are-offered-in-this-tool",
+    "href": "intro_cf.html#what-counterfactual-analysis-approaches-are-offered-in-this-tool",
+    "title": "Introduction to counterfactual analysis",
+    "section": "What counterfactual analysis approaches are offered in this tool?",
+    "text": "What counterfactual analysis approaches are offered in this tool?"
+  },
+  {
+    "objectID": "missing.html#unititem-non-response",
+    "href": "missing.html#unititem-non-response",
+    "title": "Dealing with missing data",
+    "section": "Unit/item non-response",
+    "text": "Unit/item non-response"
+  },
+  {
+    "objectID": "missing.html#patterns",
+    "href": "missing.html#patterns",
+    "title": "Dealing with missing data",
+    "section": "Patterns",
+    "text": "Patterns"
+  },
+  {
+    "objectID": "missing.html#missing-data-mechanisms",
+    "href": "missing.html#missing-data-mechanisms",
+    "title": "Dealing with missing data",
+    "section": "Missing data mechanisms",
+    "text": "Missing data mechanisms"
+  },
+  {
+    "objectID": "missing.html#approaches-available-in-digicat",
+    "href": "missing.html#approaches-available-in-digicat",
+    "title": "Dealing with missing data",
+    "section": "Approaches available in DigiCAT",
+    "text": "Approaches available in DigiCAT\n\ncomplete case analysis\n\n\nmultiple imputation"
+  },
+  {
+    "objectID": "survey.html#complex-survey-data-in-psm",
+    "href": "survey.html#complex-survey-data-in-psm",
+    "title": "Dealing with complex survey data",
+    "section": "Complex survey data in PSM",
+    "text": "Complex survey data in PSM"
+  },
+  {
+    "objectID": "survey.html#missing-data-and-complex-survey-data",
+    "href": "survey.html#missing-data-and-complex-survey-data",
+    "title": "Dealing with complex survey data",
+    "section": "Missing data and complex survey data",
+    "text": "Missing data and complex survey data"
+  }
+]

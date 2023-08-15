@@ -1,0 +1,50 @@
+{
+  "index.qmd": {
+    "index.html": "f6f1fe32"
+  },
+  "template.qmd": {
+    "template.html": "051267e4"
+  },
+  "tests.qmd": {
+    "tests.html": "1025f817"
+  },
+  "ttest.qmd": {
+    "ttest.html": "fc4f8a1c"
+  },
+  "chisq.qmd": {
+    "chisq.html": "81190cbe"
+  },
+  "covcor.qmd": {
+    "covcor.html": "04eddc5d"
+  },
+  "csstests.qmd": {
+    "csstests.html": "ad3e9236"
+  },
+  "surveywrangle.qmd": {
+    "surveywrangle.html": "0025c018"
+  },
+  "errorcontrol.qmd": {
+    "errorcontrol.html": "0e551ab5"
+  },
+  "irt.qmd": {
+    "irt.html": "1cfc9dd1"
+  },
+  "choose_cf.qmd": {
+    "choose_cf.html": "d7873ea5"
+  },
+  "further.qmd": {
+    "further.html": "24a127da"
+  },
+  "howto_digicat.qmd": {
+    "howto_digicat.html": "d5a16eb6"
+  },
+  "intro_cf.qmd": {
+    "intro_cf.html": "c0039eea"
+  },
+  "missing.qmd": {
+    "missing.html": "ae3cc61f"
+  },
+  "survey.qmd": {
+    "survey.html": "0b9af41c"
+  }
+}

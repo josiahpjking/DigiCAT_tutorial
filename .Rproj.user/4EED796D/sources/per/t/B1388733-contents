@@ -1,0 +1,20 @@
+---
+title: "Choosing a counterfactual analysis approach"
+---
+
+
+## Propensity score matching 
+
+
+### Propensity score specification and estimation 
+
+### Nearest neighbour 1:1 matching 
+
+### Nearest neighbour K:1 matching 
+
+
+## IPTW 
+
+
+## NBP
+

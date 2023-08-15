@@ -1,0 +1,10 @@
+---
+title: "Introduction to counterfactual analysis"
+---
+
+## What is counterfactual analysis?
+
+
+## What kind of research questions can be answered with counterfactual analysis?  
+
+## What counterfactual analysis approaches are offered in this tool? 
