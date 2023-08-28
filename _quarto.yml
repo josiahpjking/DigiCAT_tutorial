@@ -18,11 +18,7 @@ website:
       - missing.qmd
       - survey.qmd
       - further.qmd
-    # right:
-    #   - text: "About"
-    #     menu:
-    #     # - text: "CSS TESTS"
-    #     #   href: csstests.html
+
 
 
 format:
