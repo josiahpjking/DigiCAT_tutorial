@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DigiCAT Tutorials - Introduction to counterfactual analysis</title>
+<title>DigiCAT Tutorials - 3. Choosing a Counterfactual Analysis Approach</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,7 +87,7 @@ if(f.classList.contains('fa-hand-o-right')) {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro_cf.html">Introduction to counterfactual analysis</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_choosecf.html">3. Choosing a Counterfactual Analysis Approach</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,32 +120,44 @@ if(f.classList.contains('fa-hand-o-right')) {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./howto_digicat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The DigiCAT Tool</span></a>
+  <a href="./01_howto_digicat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. The DigiCAT Tool</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_cf.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Introduction to counterfactual analysis</span></a>
+  <a href="./02_introcf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Introduction to Counterfactual Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./missing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dealing with missing data</span></a>
+  <a href="./03_choosecf.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">3. Choosing a Counterfactual Analysis Approach</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./survey.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dealing with complex survey data</span></a>
+  <a href="./04_cfmethod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Counterfactual Methods</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./further.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Further reading</span></a>
+  <a href="./05_missing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Missing Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_survey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Complex Survey Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_further.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements &amp; Further reading</span></a>
   </div>
 </li>
     </ul>
@@ -158,9 +170,19 @@ if(f.classList.contains('fa-hand-o-right')) {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-counterfactual-analysis" id="toc-what-is-counterfactual-analysis" class="nav-link active" data-scroll-target="#what-is-counterfactual-analysis">What is counterfactual analysis?</a></li>
-  <li><a href="#what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis" id="toc-what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis" class="nav-link" data-scroll-target="#what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis">What kind of research questions can be answered with counterfactual analysis?</a></li>
-  <li><a href="#what-counterfactual-analysis-approaches-are-offered-in-this-tool" id="toc-what-counterfactual-analysis-approaches-are-offered-in-this-tool" class="nav-link" data-scroll-target="#what-counterfactual-analysis-approaches-are-offered-in-this-tool">What counterfactual analysis approaches are offered in this tool?</a></li>
+  <li><a href="#ordinal-vs-binary-treatments" id="toc-ordinal-vs-binary-treatments" class="nav-link active" data-scroll-target="#ordinal-vs-binary-treatments">Ordinal vs Binary Treatments</a></li>
+  <li><a href="#matching-vs-weighting" id="toc-matching-vs-weighting" class="nav-link" data-scroll-target="#matching-vs-weighting">Matching vs Weighting</a></li>
+  <li><a href="#machine-learning-versus-regression-propensity-estimation" id="toc-machine-learning-versus-regression-propensity-estimation" class="nav-link" data-scroll-target="#machine-learning-versus-regression-propensity-estimation">Machine learning versus regression propensity estimation</a></li>
+  <li><a href="#complete-case-versus-multiple-imputation-versus-weighting-for-missing-data" id="toc-complete-case-versus-multiple-imputation-versus-weighting-for-missing-data" class="nav-link" data-scroll-target="#complete-case-versus-multiple-imputation-versus-weighting-for-missing-data">Complete case versus multiple imputation versus weighting for missing data</a></li>
+  <li><a href="#the-benefits-of-sensitivity-analyses" id="toc-the-benefits-of-sensitivity-analyses" class="nav-link" data-scroll-target="#the-benefits-of-sensitivity-analyses">The benefits of sensitivity analyses</a></li>
+  <li><a href="#propensity-score-matching" id="toc-propensity-score-matching" class="nav-link" data-scroll-target="#propensity-score-matching">Propensity score matching</a>
+  <ul class="collapse">
+  <li><a href="#propensity-score-specification-and-estimation" id="toc-propensity-score-specification-and-estimation" class="nav-link" data-scroll-target="#propensity-score-specification-and-estimation">Propensity score specification and estimation</a></li>
+  <li><a href="#nearest-neighbour-11-matching" id="toc-nearest-neighbour-11-matching" class="nav-link" data-scroll-target="#nearest-neighbour-11-matching">Nearest neighbour 1:1 matching</a></li>
+  <li><a href="#nearest-neighbour-k1-matching" id="toc-nearest-neighbour-k1-matching" class="nav-link" data-scroll-target="#nearest-neighbour-k1-matching">Nearest neighbour K:1 matching</a></li>
+  </ul></li>
+  <li><a href="#iptw" id="toc-iptw" class="nav-link" data-scroll-target="#iptw">IPTW</a></li>
+  <li><a href="#nbp" id="toc-nbp" class="nav-link" data-scroll-target="#nbp">NBP</a></li>
   </ul>
 </nav>
     </div>
@@ -169,7 +191,7 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Introduction to counterfactual analysis</h1>
+<h1 class="title">3. Choosing a Counterfactual Analysis Approach</h1>
 </div>
 
 
@@ -184,14 +206,44 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 </header>
 
-<section id="what-is-counterfactual-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="what-is-counterfactual-analysis">What is counterfactual analysis?</h2>
+<section id="ordinal-vs-binary-treatments" class="level2">
+<h2 class="anchored" data-anchor-id="ordinal-vs-binary-treatments">Ordinal vs Binary Treatments</h2>
+<p>DigiCAT offers counterfactual analysis for different types of treatment variables. Binary treatment variables (where people either experience a treatment or not) can be analysed using propensity matching or weighting (IPTW). Ordinal treatment variables (where people might experience a treatment to different degrees) can be analysed using optimal non-bipartite propensity matching. DigiCAT will try to detect what type of treatment variable you have and if it has only two categories it will assume it is binary. If it has 3-5 categories it will assume it is ordinal.</p>
 </section>
-<section id="what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis" class="level2">
-<h2 class="anchored" data-anchor-id="what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis">What kind of research questions can be answered with counterfactual analysis?</h2>
+<section id="matching-vs-weighting" class="level2">
+<h2 class="anchored" data-anchor-id="matching-vs-weighting">Matching vs Weighting</h2>
+<p>Matching and weighting approaches are both available for binary variables. Matching can be used to estimate the ATT and weighting can be used to estimate the ATT or ATE. As such, your research question (and whether it concerns the effect of a treatment in the treated or whole population) should be your primary guide your choice of matching versus weighting. There are; however, also some other differences between matching and weighting that may be considered. For example, weighting uses the whole sample, whereas matching (depending on which method is used) might result in some unmatched cases being unused. Weighting can, therefore, have advantages when the treatment is rare or the overall sample size is small. More details on these methods are provided below.</p>
+<p>Note that though DigiCAT implements weighting and matching, reflecting the most common ways in which propensity scores are used, these are not the only way they can be used in counterfactual analysis. For example, stratifcation on the propensity score is also sometimes used and sometimes (though we do not necessarily recommend it), the propensity score is used as a covariate in a regression as form of counterfactual analysis. DigiCAT will this also offer the option to save out estimated propensity scores so that they can be used in other ways. This also allows the scores to be used in more complex analyses that are not offered in DigiCAT, for example, using them in a structural equation model. We are grateful to the member of our user group who suggested adding this feature.</p>
 </section>
-<section id="what-counterfactual-analysis-approaches-are-offered-in-this-tool" class="level2">
-<h2 class="anchored" data-anchor-id="what-counterfactual-analysis-approaches-are-offered-in-this-tool">What counterfactual analysis approaches are offered in this tool?</h2>
+<section id="machine-learning-versus-regression-propensity-estimation" class="level2">
+<h2 class="anchored" data-anchor-id="machine-learning-versus-regression-propensity-estimation">Machine learning versus regression propensity estimation</h2>
+<p>TODO</p>
+</section>
+<section id="complete-case-versus-multiple-imputation-versus-weighting-for-missing-data" class="level2">
+<h2 class="anchored" data-anchor-id="complete-case-versus-multiple-imputation-versus-weighting-for-missing-data">Complete case versus multiple imputation versus weighting for missing data</h2>
+<p>There are several options for dealing with missing data available in DigiCAT: complete case analysis, multiple imputation, and weighting. Complete case analysis should be selected when you have no missing data. It is also justifiable to use it if you are confident that there is no relation between missingness and the variables you have in your model or between the missingness and the missing values of the outcome variable. Weighting is a good option for dealing with case-level missing data, I.e., some people are completely missing at a time-point. This could happen if you have longitudinal data with your matching, treatment, and outcome variables measured at sequential time-points. If you have an attrition weight for the last time-point you could use it with missingness weighting to deal with any non-random drop-out between your baseline and outcome point. Finally, multiple imputation can be used to deal with case and variable-level missingness. However, it can take a long time to run so users with large datasets and large numbers of matching variables and/or additional covariates should be aware of this. More details on the missingness methods are provided below.</p>
+</section>
+<section id="the-benefits-of-sensitivity-analyses" class="level2">
+<h2 class="anchored" data-anchor-id="the-benefits-of-sensitivity-analyses">The benefits of sensitivity analyses</h2>
+<p>There are a lot of subjective decision points in counterfactual analysis, such as which matching variables to include, which additional covariates to include (if any), which missingness approach to use for missing data and whether to match or weight by a propensity score. While there have been a lot of advancements in recent years in our understanding of what best practice for implementing counterfactual analysis looks like, it is not always the case that there is one ‘best approach’. Sometimes it depends. Sometimes it’s still debated or there isn’t a lot of evidence to guide a decision. As such, we recommend where relevant using multiple different approaches and checking whether you get similar results with different approaches. If you do, this helps increase confidence in your findings. If your results differ a lot across approaches then the nature of the differences might be illuminating. For example, if you find that PSM is non-significant but IPTW is significant this may be because the latter uses more of the data (e.g., if the treatment and control groups are very different). Provided IPTW successfully balances the groups, it could suggest that IPTW is more suitable for these data.</p>
+</section>
+<section id="propensity-score-matching" class="level2">
+<h2 class="anchored" data-anchor-id="propensity-score-matching">Propensity score matching</h2>
+<section id="propensity-score-specification-and-estimation" class="level3">
+<h3 class="anchored" data-anchor-id="propensity-score-specification-and-estimation">Propensity score specification and estimation</h3>
+</section>
+<section id="nearest-neighbour-11-matching" class="level3">
+<h3 class="anchored" data-anchor-id="nearest-neighbour-11-matching">Nearest neighbour 1:1 matching</h3>
+</section>
+<section id="nearest-neighbour-k1-matching" class="level3">
+<h3 class="anchored" data-anchor-id="nearest-neighbour-k1-matching">Nearest neighbour K:1 matching</h3>
+</section>
+</section>
+<section id="iptw" class="level2">
+<h2 class="anchored" data-anchor-id="iptw">IPTW</h2>
+</section>
+<section id="nbp" class="level2">
+<h2 class="anchored" data-anchor-id="nbp">NBP</h2>
 
 
 </section>

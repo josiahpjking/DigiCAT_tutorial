@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DigiCAT Tutorials - Choosing a counterfactual analysis approach</title>
+<title>DigiCAT Tutorials - 2. Introduction to Counterfactual Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,9 +87,7 @@ if(f.classList.contains('fa-hand-o-right')) {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">
-      DigiCAT Tutorials
-      </li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_introcf.html">2. Introduction to Counterfactual Analysis</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -122,32 +120,44 @@ if(f.classList.contains('fa-hand-o-right')) {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./howto_digicat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The DigiCAT Tool</span></a>
+  <a href="./01_howto_digicat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. The DigiCAT Tool</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_cf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to counterfactual analysis</span></a>
+  <a href="./02_introcf.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">2. Introduction to Counterfactual Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./missing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dealing with missing data</span></a>
+  <a href="./03_choosecf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Choosing a Counterfactual Analysis Approach</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./survey.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dealing with complex survey data</span></a>
+  <a href="./04_cfmethod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Counterfactual Methods</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./further.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Further reading</span></a>
+  <a href="./05_missing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Missing Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_survey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Complex Survey Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_further.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements &amp; Further reading</span></a>
   </div>
 </li>
     </ul>
@@ -160,14 +170,10 @@ if(f.classList.contains('fa-hand-o-right')) {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#propensity-score-matching" id="toc-propensity-score-matching" class="nav-link active" data-scroll-target="#propensity-score-matching">Propensity score matching</a>
-  <ul class="collapse">
-  <li><a href="#propensity-score-specification-and-estimation" id="toc-propensity-score-specification-and-estimation" class="nav-link" data-scroll-target="#propensity-score-specification-and-estimation">Propensity score specification and estimation</a></li>
-  <li><a href="#nearest-neighbour-11-matching" id="toc-nearest-neighbour-11-matching" class="nav-link" data-scroll-target="#nearest-neighbour-11-matching">Nearest neighbour 1:1 matching</a></li>
-  <li><a href="#nearest-neighbour-k1-matching" id="toc-nearest-neighbour-k1-matching" class="nav-link" data-scroll-target="#nearest-neighbour-k1-matching">Nearest neighbour K:1 matching</a></li>
-  </ul></li>
-  <li><a href="#iptw" id="toc-iptw" class="nav-link" data-scroll-target="#iptw">IPTW</a></li>
-  <li><a href="#nbp" id="toc-nbp" class="nav-link" data-scroll-target="#nbp">NBP</a></li>
+  <li><a href="#what-is-counterfactual-analysis" id="toc-what-is-counterfactual-analysis" class="nav-link active" data-scroll-target="#what-is-counterfactual-analysis">What is counterfactual analysis?</a></li>
+  <li><a href="#what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis" id="toc-what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis" class="nav-link" data-scroll-target="#what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis">What kind of research questions can be answered with counterfactual analysis?</a></li>
+  <li><a href="#what-counterfactual-analysis-approaches-are-offered-in-this-tool" id="toc-what-counterfactual-analysis-approaches-are-offered-in-this-tool" class="nav-link" data-scroll-target="#what-counterfactual-analysis-approaches-are-offered-in-this-tool">What counterfactual analysis approaches are offered in this tool?</a></li>
+  <li><a href="#why-not-just-adjust-for-covariates-in-regression" id="toc-why-not-just-adjust-for-covariates-in-regression" class="nav-link" data-scroll-target="#why-not-just-adjust-for-covariates-in-regression">Why not just adjust for covariates in regression?</a></li>
   </ul>
 </nav>
     </div>
@@ -176,7 +182,7 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Choosing a counterfactual analysis approach</h1>
+<h1 class="title">2. Introduction to Counterfactual Analysis</h1>
 </div>
 
 
@@ -191,23 +197,38 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 </header>
 
-<section id="propensity-score-matching" class="level2">
-<h2 class="anchored" data-anchor-id="propensity-score-matching">Propensity score matching</h2>
-<section id="propensity-score-specification-and-estimation" class="level3">
-<h3 class="anchored" data-anchor-id="propensity-score-specification-and-estimation">Propensity score specification and estimation</h3>
+<section id="what-is-counterfactual-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-counterfactual-analysis">What is counterfactual analysis?</h2>
+<p>Counterfactual analysis is a set of techniques for trying to understand the impact of a treatment. It does so by comparing people who experienced that treatment to a hypothetical ‘counterfactual’ version of themselves who did not. Since in the real world, people either do or not experience a treatment, we cannot literally compare the same person under the scenario of experiencing versus not experiencing a treatment. Instead controls (who did not experience the treatment) who are very similar to the treated people in all important respects are used to stand in for the counterfactual. By ‘very similar in all important respects’ we mean that although they did not experience the treatment, they had a very similar propensity to or ‘similar chances of’ experiencing the treatment’ as a person who did experience the treatment. This propensity is estimated based on their levels of ‘confounding factors’ I.e., factors that impact both the likelihood of receiving the treatment and the outcome of interest. We can compare treated and control units on an outcome of interest (e.g., depression) and if those outcomes differ we can be more sure that it is due to the treatment, rather than any confounding factors. As such, counterfactual analysis can support causal inference in a way that models that don’t take into account confounding factors cannot. As we discuss in these tutorials, there are several methods by which propensities can be estimated and used to support causal inference in observational data.</p>
+<p>As an example of where counterfactual analysis can be useful, we might ask whether social media has a negative impact on adolescents’ mental health. We might find an association between social media use and depression in adolescents. However, we can’t be sure yet that this association is not due to confounding. For example, maybe adolescents with poorer mental health tend to turn to social media more (and are also more likely to continue to have poorer mental health ,given the stability of mental health over time). Or maybe there are other confounding factors, like attention deficit hyperactivity disorder (ADHD) that might lead people to use more social media and separately increase their risk of depression. If the set of potential confounding factors in this association can be identified and measured they could be used in a counterfactual analysis to see if there is still an association between social media use and depression after accounting for confounding. People with similar propensities to use social media a lot but who differ in their actual use could be compared. If those who use social media more show higher depression levels, we can be more sure that this is actually due to the social media use, rather than other confounding factors. We will use the example of social media use and mental health as an example throughout these tutorials as social media use was identified by our young person advisory group as a factor that they thought it particularly important to explore in research on young people’s mental health.</p>
 </section>
-<section id="nearest-neighbour-11-matching" class="level3">
-<h3 class="anchored" data-anchor-id="nearest-neighbour-11-matching">Nearest neighbour 1:1 matching</h3>
+<section id="what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis">What kind of research questions can be answered with counterfactual analysis?</h2>
+<p>Counterfactual analysis can be used to address research questions concerned with the causal impact of some candidate treatment or exposure on some outcome variable of interest. Usually this is in observational data where it is not possible to control whether people experience a treatment or not. It is particularly valuable when it is suspected that people do not randomly experience a treatment or not.<br>
+It needs three main things:</p>
+<ol type="1">
+<li>A treatment variable (e.g., social media use)<br>
+</li>
+<li>An outcome variable (e.g., depression)<br>
+</li>
+<li>Confounders or ’matching variables (e.g., ADHD, prior depression, sex/gender, socioeconomic status, physical health etc.)</li>
+</ol>
+<p>Other than the social media use example above, examples of research questions that could be asked using counterfactual analysis include:</p>
+<ul>
+<li>What is the impact of reading for pleasure on mental health?</li>
+<li>Does school exclusion lead to poorer labour market outcomes?</li>
+<li>Do more positive relationships with teachers lead to fewer behavioural problems in adolescence?</li>
+</ul>
+<p>When thinking about the different research questions that can be answered, it is useful to make a distinction between two key treatment effects. The first is the ‘ATT’ which stands for the average effect of treatment on the treated. The other is the ‘ATE’ which is the ‘average treatment effect’ and captures the effect of the treatment over the entire population. That is, it estimates what the effect would be at the population level if entire population moved from untreated to treated. Some methods can give you ATE while others can give you ATT so it is important to think about which it is you are interested in when deciding on your approach (also see ‘Choosing a counterfactual analysis approach’). The key question to ask are ‘is the treatment likely to make sense for/be feasible for the whole population or just a sub-section of the population?’ If the answer is ‘no’ this suggests that the ATT may be or more interest than the ATE. In some cases, both ATT and ATE may be of interest.</p>
 </section>
-<section id="nearest-neighbour-k1-matching" class="level3">
-<h3 class="anchored" data-anchor-id="nearest-neighbour-k1-matching">Nearest neighbour K:1 matching</h3>
+<section id="what-counterfactual-analysis-approaches-are-offered-in-this-tool" class="level2">
+<h2 class="anchored" data-anchor-id="what-counterfactual-analysis-approaches-are-offered-in-this-tool">What counterfactual analysis approaches are offered in this tool?</h2>
+<p>DigiCAT currently offers several broad approaches to counterfactual analysis: propensity score matching for binary (traditional propensity score analysis) and ordinal treatment variables (non-bipartite optimal matching) and propensity score weighting for binary variables (inverse propensity of treatment weighting; IPTW). Propensity score matching for binary treatments is based on matching treated and control units with similar propensity scores to achieve balance between treated and control groups. Propensity weighting for binary treatments also uses a propensity score but transforms it into a weight that is used in a weighted regression. The weighted regression up-weights some cases and down-weights others to achieve balance between the treated and control groups. Non-bipartite propensity scoring estimates a propensity score based on treating the treatment variable as ordinal and then matches cases that have similar propensity scores but different treatment levels.</p>
+<p>We are continuing to develop DigiCAT to make more approaches available. Please see X for a list of features that are currently under development. Feel free to get in touch <a href="mailto:uoe_digicat-group@uoe.onmicrosoft.com">uoe_digicat-group@uoe.onmicrosoft.com</a> if you have suggestions for approaches you would like to see within the tool.</p>
 </section>
-</section>
-<section id="iptw" class="level2">
-<h2 class="anchored" data-anchor-id="iptw">IPTW</h2>
-</section>
-<section id="nbp" class="level2">
-<h2 class="anchored" data-anchor-id="nbp">NBP</h2>
+<section id="why-not-just-adjust-for-covariates-in-regression" class="level2">
+<h2 class="anchored" data-anchor-id="why-not-just-adjust-for-covariates-in-regression">Why not just adjust for covariates in regression?</h2>
+<p>Perhaps the most widely used approach to attempting to deal with confounding is to adjust for potential confounding within a regression or ANOVA-type model. This approach chould be described as ‘conditional adjustment’. However, counterfactual analysis provides a more principled method that places causal inference at the fore. Importantly, it includes steps to check and ensure good covariate balance has been achieved. This is not guaranteed and may fail in traditional covariate adjustment approaches, leading to biases when trying to understand the causal effect of a treatment without any warning signs for the user. Further, counterfactual analysis provides a way of more clearly defining the target population about which inferences are being made. It can also readily incorporate a very large number of covariates. None of this comes at the cost of Interpretability when using methods like propensity matching or weighting. In DigiCAT in particular, both methods use a linear regression for the outcome model so the interpretation of the treatment effect is no more complicated than in a traditional regression model.</p>
 
 
 </section>

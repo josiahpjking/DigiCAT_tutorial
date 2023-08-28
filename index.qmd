@@ -5,4 +5,8 @@ title: "DigiCAT Tutorial Pages"
 
 ## Overview of tutorials
 
+Welcome to the tutorial pages for DigiCAT! The tutorials provide information on what counterfactual analysis is, why it can be useful, and how to do it using DigiCAT. These pages are designed to be accessible to those with minimal experience of counterfactual analysis. As such, where we provide technical details, we have also endeavoured to provide a translation; a ‘what does this mean?’. If after reading through the tutorials you crave more information on counterfactual analysis you can check out the further reading. 
+
 ## How to engage with tutorials
+
+The tutorials are structured such that users can read only a sub-section of the sections relevant for their analysis and tailored to their level of background knowledge. If you are a first-time user of counterfactual analysis we recommend reading sections X-Y. If you need some help choosing a counterfactual analysis approach, we recommend reading section X. If you are already confident in your knowledge of counterfactual analysis and know which approach you would like to implement you can go directly to the relevant tutorial page for information on how it is implemented in DigiCAT.

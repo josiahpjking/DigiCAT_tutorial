@@ -1,0 +1,47 @@
+---
+title: "Acknowledgements & Further reading"
+---
+
+
+## Acknowledgements  
+
+We are grateful to the Wellcome Trust for funding the Discovery and Prototyping phases of the development of DigiCAT. Our thanks also go to the many who contributed to DigiCAT in various ways. We are grateful to the young person advisory groups (YPAGs) who provided invaluable insights and help guide the direction of DigiCAT, to the users who responded to our user survey and to the group members who provided feedback on iterations of the tool.  
+
+## Further Reading
+
+Accessible introductions to causal inference
+
+- Pearl’s Primer on causal inference
+
+More on counterfactual analysis  
+
+- [recent book that included the chapter on NPB]
+- [matchIT /other sources on doing it in R]
+- Caliendo, M., & Kopeinig, S. (2008). Some practical guidance for the implementation of propensity score matching. Journal of economic surveys, 22(1), 31-72.  
+
+
+Advanced topics in counterfactual analysis?
+
+- [counterfactual analysis with SEM?]
+- [causal mediation?]
+- [heterogeneous treatment effects?]
+
+
+More on missing data  
+
+- Nguyen, C. D., J. B. Carlin, and K. J. Lee. 2017. “Model Checking in Multiple Imputation: An Overview and Case Study.” Emerging Themes in Epidemiology 14 (1): 8.
+
+More on counterfactual analysis and complex survey designs
+ 
+- Austin, Peter C., Nathaniel Jembere, and Maria Chiu. 2016. “Propensity Score Matching and Complex Surveys.” Statistical Methods in Medical Research 27 (4): 1240–57. https://doi.org/10.1177/0962280216658920.  
+- Lenis, David, Trang Quynh Nguyen, Nianbo Dong, and Elizabeth A. Stuart. 2019. “It’s All about Balance: Propensity Score Matching in the Context of Complex Survey Data.” Biostatistics 20 (1): 147–63. https://doi.org/10.1093/biostatistics/kxx063.  
+
+
+More on machine learning ensemble methods
+
+- McCaffrey, D. F., Ridgeway, G., & Morral, A. R. (2004). Propensity Score Estimation With Boosted Regression for Evaluating Causal Effects in Observational Studies. Psychological Methods, 9(4), 403–425. 
+
+
+Examples of papers using counterfactual analysis
+
+- [one per major approach implemented in DigiCAT or our own papers that implement multiple approaches]

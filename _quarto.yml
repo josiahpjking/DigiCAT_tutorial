@@ -13,12 +13,18 @@ website:
     collapse-level: 1
     contents:
       - index.qmd
-      - howto_digicat.qmd
-      - intro_cf.qmd
-      - missing.qmd
-      - survey.qmd
-      - further.qmd
-
+      - 01_howto_digicat.qmd
+      - 02_introcf.qmd
+      - 03_choosecf.qmd
+      - 04_cfmethod.qmd
+      - 05_missing.qmd
+      - 06_survey.qmd
+      - 07_further.qmd
+    # right:
+    #   - text: "About"
+    #     menu:
+    #     # - text: "CSS TESTS"
+    #     #   href: csstests.html
 
 
 format:

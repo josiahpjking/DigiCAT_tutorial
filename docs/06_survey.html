@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DigiCAT Tutorials - Dealing with complex survey data</title>
+<title>DigiCAT Tutorials - 6. Complex Survey Data</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,7 +87,7 @@ if(f.classList.contains('fa-hand-o-right')) {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./survey.html">Dealing with complex survey data</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./06_survey.html">6. Complex Survey Data</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,32 +120,44 @@ if(f.classList.contains('fa-hand-o-right')) {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./howto_digicat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The DigiCAT Tool</span></a>
+  <a href="./01_howto_digicat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. The DigiCAT Tool</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_cf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to counterfactual analysis</span></a>
+  <a href="./02_introcf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Introduction to Counterfactual Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./missing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dealing with missing data</span></a>
+  <a href="./03_choosecf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Choosing a Counterfactual Analysis Approach</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./survey.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Dealing with complex survey data</span></a>
+  <a href="./04_cfmethod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Counterfactual Methods</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./further.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Further reading</span></a>
+  <a href="./05_missing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Missing Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_survey.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">6. Complex Survey Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_further.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements &amp; Further reading</span></a>
   </div>
 </li>
     </ul>
@@ -169,7 +181,7 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Dealing with complex survey data</h1>
+<h1 class="title">6. Complex Survey Data</h1>
 </div>
 
 
@@ -186,12 +198,31 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 <section id="what-is-complex-survey-data" class="level2">
 <h2 class="anchored" data-anchor-id="what-is-complex-survey-data">What is complex survey data</h2>
+<p>Complex survey data refers to data that have been collected according to an explicit sampling scheme that deviates from a simple random sample (where everyone in a target population has the same chance of being selected into a sample). This might be done to save data collection resources, or to make sure that there are sufficient numbers of a small group in the sample.</p>
+<p>Due to their advantages, complex sampling designs are very common in large-scale survey data. These datasets usually provide variables relating to their complex sampling designs so that users can take them into account in their analyses.</p>
+<p>Datasets might include stratification, clustering, and/or sampling weights (sometimes called ‘survey’ or ‘design weights’) which correspond to the different characteristics of complex sampling. Stratification is when the population is divided into relatively homogeneous groups and a number of pre-determined units is sampled from each. Stratification variables indicate to which stratum a case belongs. For example…..[XXX]. Clustering is when units are sampled in ‘clumps’, for example, rather than randomly sampling households within a whole large area, people within a subset of neighbourhoods within that area might be sampled. Clustering variables thus indicate to which cluster a case belongs. Sampling weights reflect the unequal chances of people being selected into a sample. Cases that had a high probability of selection will have low weights and people who had a low probability of selection will have have high weights. This means that when it comes to the analysis, under-represented groups (relative to the population) will be correspondingly up-weighted and over-represented groups will be down-weighted.</p>
+<p>If a dataset has been collected using a complex survey sampling design it is important to take this into account in analyses of those datasets if the research questions relate to the underlying population that the sample was taken from. For example, ignoring clustering will tend to give standard errors that are too small and will inflate statistical significance. Ignoring sampling weights can result in the wrong values for the treatment estimates.</p>
+<p>DigiCAT currently implements a ‘design-based’ approach to dealing with complex survey data. This means that it uses information about how the data were sampled (I.e., any sampling, stratification, and clustering variables) when doing the analysis. It specifically uses a ‘pseudomaximum likelihood estimation’ (PML) approach with a Taylor Series Linearisation. PML is a form of weighted estimation that replaces the usual sample statistics usually used with a weighted version. Taylor Series Linearisation provides a correction to the standard errors.</p>
 </section>
 <section id="complex-survey-data-in-psm" class="level2">
 <h2 class="anchored" data-anchor-id="complex-survey-data-in-psm">Complex survey data in PSM</h2>
+<p>When estimating the population ATT (PATT) it is important to take the survey design into account in the outcome model. This means that any stratification, clustering, and weighting variables must feature in the linear regression outcome model that comes at the end of the PSM workflow. It does so using the PML and Taylor Series Linearisation solution mentioned above.</p>
+<p>Previous research has been less clear on whether complex survey design variables need to be taken into account at earlier stages of the PSM workflow, namely when estimating the propensity model and when assessing balance. Some authors have made conceptual arguments against fitting design-adjusted propensity models and instead including survey weights as a covariate (DuGoff et al., 2014). This is based on the idea that propensity scores are inherently concerns with samples rather than populations and so there is no need to generalise them to a population. When researchers have used simulation studies to explore this issue they have found inconsistent evidence and this has led some to propose that it doesn’t really make an important difference (Ridgeway et al.&nbsp;2015; Lenis et al., 2019; Austin et al., 2018). However, one quite comprehensive simulation study did find that for continuous outcomes like the ones that can be studied with DigiCAT there were benefits to fitting a design-adjusted model for propensity score estimation and for taking complex survey variables into account when assessing balance (Austin et al., 2018). This was further supported by another comprehensive simulation study (Lenis et al., 2019 ). For this reason, in DigiCAT if users supply complex survey variables, these are also taken into account when estimating the propensity score with a logistic regression and when assessing matching variable balance. The way that they are taken into account in the logistic regression is very similar to the way they feature in the linear regression outcome model. [gloss details]. The way they are taken into account in assessing balance is [brief detail].</p>
 </section>
 <section id="missing-data-and-complex-survey-data" class="level2">
 <h2 class="anchored" data-anchor-id="missing-data-and-complex-survey-data">Missing data and complex survey data</h2>
+<ul>
+<li>Approaches in DigiCAT [Aja]
+<ul>
+<li>PML</li>
+</ul></li>
+<li>Combining missing data and complex survey data
+<ul>
+<li>MI</li>
+<li>Weighting</li>
+</ul></li>
+<li>Worked example of PSM with social media &amp; mental health</li>
+</ul>
 
 
 </section>

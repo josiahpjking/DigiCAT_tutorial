@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>DigiCAT Tutorials - 5. Missing Data</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script>
+function toggle_visibility(id1, id2) {
+var e = document.getElementById(id1);
+var f = document.getElementById(id2);
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+if(f.classList.contains('fa-hand-o-right')) {
+    f.classList.add('fa-hand-o-down')
+    f.classList.remove('fa-hand-o-right')
+} else {
+    f.classList.add('fa-hand-o-right')
+    f.classList.remove('fa-hand-o-down')
+}
+}
+</script>
+
+<script src="https://kit.fontawesome.com/120b08a6f5.js" crossorigin="anonymous"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./05_missing.html">5. Missing Data</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">DigiCAT Tutorials</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DigiCAT Tutorial Pages</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_howto_digicat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. The DigiCAT Tool</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_introcf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Introduction to Counterfactual Analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_choosecf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Choosing a Counterfactual Analysis Approach</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_cfmethod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Counterfactual Methods</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_missing.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">5. Missing Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_survey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Complex Survey Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_further.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements &amp; Further reading</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#intro-to-missing-data" id="toc-intro-to-missing-data" class="nav-link active" data-scroll-target="#intro-to-missing-data">Intro to missing data</a></li>
+  <li><a href="#unititem-non-response" id="toc-unititem-non-response" class="nav-link" data-scroll-target="#unititem-non-response">Unit/item non-response</a></li>
+  <li><a href="#patterns" id="toc-patterns" class="nav-link" data-scroll-target="#patterns">Patterns</a></li>
+  <li><a href="#missing-data-mechanisms" id="toc-missing-data-mechanisms" class="nav-link" data-scroll-target="#missing-data-mechanisms">Missing data mechanisms</a></li>
+  <li><a href="#approaches-available-in-digicat" id="toc-approaches-available-in-digicat" class="nav-link" data-scroll-target="#approaches-available-in-digicat">Approaches available in DigiCAT</a>
+  <ul class="collapse">
+  <li><a href="#complete-case-analysis" id="toc-complete-case-analysis" class="nav-link" data-scroll-target="#complete-case-analysis">complete case analysis</a></li>
+  <li><a href="#multiple-imputation" id="toc-multiple-imputation" class="nav-link" data-scroll-target="#multiple-imputation">multiple imputation</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">5. Missing Data</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="intro-to-missing-data" class="level2">
+<h2 class="anchored" data-anchor-id="intro-to-missing-data">Intro to missing data</h2>
+<p>It’s likely that your data will be subject to non-response, and therefore contain missing values. Units (participants, patients) may be selected into your sample but refuse to take part in your survey, they may shy from answering certain questions, and there may be defective measures, deletion of outliers, or a ‘missing by design’ approach.</p>
+<p>However, to handle missingness assumptions must be made regarding the process or cause of nonresponse, in addition to model assumptions. The simplest solution is of course to limit the occurrence of missingness. However, where this is not possible, there are some options which DigiCAT employs to help you navigate this situation to facilitate your counterfactual analysis.</p>
+</section>
+<section id="unititem-non-response" class="level2">
+<h2 class="anchored" data-anchor-id="unititem-non-response">Unit/item non-response</h2>
+<p>You may hear of a distinction between ‘unit’ and ‘item’ nonresponse. Unit nonresponse would refer to a situation in which entire units are not observed – they may refuse to take part in your survey; item nonresponse would refer to a sampled unit that responds to some but not all questions or measures. Although there is ambiguity – unit nonresponse may be considered an extreme version of item nonresponse, and as such can be treated via the same techniques. However, in practice, chosen techniques may be tailored to treat item or unit nonresponse.</p>
+</section>
+<section id="patterns" class="level2">
+<h2 class="anchored" data-anchor-id="patterns">Patterns</h2>
+<p>You should consider the pattern of missingness in your data when justifying your theory and application of techniques to account for missing values. Below we briefly describe common missing data patterns.</p>
+<p><strong>Univariate missing pattern:</strong> If you have two variables, and one is completely observed whilst the other contains missing values, this would be illustrative of a univariate missing data pattern. This would remain the same if we had more than two variables – if we had five variables, and only one was not completely observed, we would have a univariate missing data pattern.</p>
+<p><strong>Monotone missing pattern:</strong> Unlike univariate missing data, monotone missing data describes a situation in which we have more than one variable with missing values. A monotone missing data pattern can be demonstrated if, once a missing value occurs in one row of a variable, all subsequent values in that row are missing too. This is commonly found in longitudinal, or panel, data. A univariate missing pattern is often considered a special case of a monotone missing pattern.</p>
+<p><strong>Block/file-matching missing pattern:</strong> this pattern is frequently obtained via multiple matrix sampling/split questionnaire designs. In this pattern, any observed data point can be reached via another observed data point through a series of vertical/horizontal moves.</p>
+<p><strong>Arbitrary missing pattern:</strong> Perhaps the most common pattern, an arbitrary pattern can be illustrated if we consider two variables (X1, X2), and for some units X1 is observed but X2 is missing, and for other units X2 is observed but X1 is missing.</p>
+</section>
+<section id="missing-data-mechanisms" class="level2">
+<h2 class="anchored" data-anchor-id="missing-data-mechanisms">Missing data mechanisms</h2>
+<p>The missing data mechanism (MDM) is the process generating the binary response variable that tells us whether values of the variables within our dataset are observed or not.</p>
+<p><strong>Missing Complete at Random (MCAR):</strong> If the probability of missingness is equal for all cases, data are ‘missing completely at random’, and this suggests that the cause of unobserved values is not associated with the data – whether our values are observed or not does not depend on our data.</p>
+<ul>
+<li>Example scenario: Say we have two variables, X1 and X2, and we assume that X1 is not completely observed (there are missings) but X2 is (there are no missings). The X1 variable would be considered MCAR if the probability of observing or not observing X1 is the same for all possible values of variable X2 and all observed X1 variables.</li>
+</ul>
+<p><strong>Missing at Random (MAR):</strong> If the probability of missingness is equal for all cases within groups defined by observed data, the data are said to be ‘missing at random’. That is, if the probability of missingness depends on the observed, not unobserved, data.</p>
+<ul>
+<li>Example scenario: Let’s take our earlier variables, X1 and X2, and assume they are negatively correlated. For illustration, X1 may represent annual income, whilst X2 may represent family size. If those units with a smaller family size are more likely to not complete the annual income question, then missing annual income (X1) values would be considered MAR.</li>
+</ul>
+<p><strong>Missing Not at Random (MNAR):</strong> The most complex missing mechanism to consider, missing not at random describes the situation in which the probability of missingness varies according to an unknown.</p>
+<ul>
+<li>Example scenario: Demonstrated once again by our X1 and X2 variables, if individuals with a high X1 value (e.g., high annual income) tend to not complete the X1 (annual income) question, even within households with the same family size (X2), then missing values would be MNAR.</li>
+</ul>
+<p>Assumptions about these missing data mechanisms are critical in deciding how to handle your missing data problem. You should note that the MDM may vary over variables and units within your dataset. For instance, one variable may be assumed MCAR, whilst another may be MNAR.</p>
+<p>Most simple or quick fixes assume, often unrealistically, that data are MCAR. If this assumption is breached, analyses will provide biased inferences. There exist some techniques to probe the MDM and assumptions, such as Little’s MCAR test (only applicable to quantitative data), inspection of missingness patterns, and descriptive information. For example, proportions of missingness per variable may help to crudely examine the amount of missing information – the higher the amount of missingness, the heavier the weight ascribed to the correctness of MDM assumptions and thus the method used to handle this missingness. Assessment of missing data patterns may aid us in deciding which handling technique to select and visualisations may inform us whether the MDM is selective or not. However, unfortunately there is little available to help decipher if data are MAR or MNAR, and this assumption rests on empirical results and theory.</p>
+</section>
+<section id="approaches-available-in-digicat" class="level2">
+<h2 class="anchored" data-anchor-id="approaches-available-in-digicat">Approaches available in DigiCAT</h2>
+<section id="complete-case-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="complete-case-analysis">complete case analysis</h3>
+<p>If your dataset contains missing values, standard software that is intended to perform complete-data analyses may either stop processing and present an error message, or analyse only the completely observed cases; they are seldom prepared to handle datasets with missingness. Therefore, as in the case of the latter example, the software may perform pragmatic decisions, without theoretical justification, in order to allow your analysis to proceed. However, in cases such as this, your inferences may be invalid. Perhaps the most common ad-hoc method, as described here, is complete case analysis (CCA), in which only the completely observed cases are entered into the analysis. CCA will yield valid inferences if the MDM is MCAR, as the observed values would therefore be considered a random sample from the complete dataset. Yet, as we known from our knowledge on assumptions, generally CCA may lead to invalid inferences if missing values are MAR or MNAR.</p>
+</section>
+<section id="multiple-imputation" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-imputation">multiple imputation</h3>
+<p>When we refer to imputation, we refer to the process in which we replace missing values in our dataset with plausible values that may have been observed. Unlike the methods discussed above, imputation allows us to make use of all of our data, and to use standard methods, designed for complete-data analysis. For example, if we had a variable, ‘height’, which contained a missing value, we may replace it with a single plausible value – such as the mean of the non-missing values for this variable. This would be an example of a single imputation method. However, in practice our variables likely associate, and we must further acknowledge that there is some degree of uncertainty about our estimate (we are not 100% sure our imputed value is the true value). Single imputation methods do not account for these factors.</p>
+<p>However, an approach that does recognise this uncertainty is ‘multiple imputation’ (MI). MI acknowledges this uncertainty by creating multiple versions of imputed datasets, with each dataset representing one possible complete dataset, with different estimates of the missing values. Generally, these estimates are the result of a regression model, in which incomplete variables are the outcome, and complete variables are predictors. An iterative algorithm employs Bayesian estimation to update these regression parameters, to ensure that imputations are not drawn from one single set, and that new estimates generate each set of imputations.</p>
+<p>We can choose how many datasets (often noted ‘m’) to create; the default in DigiCAT is m = 5. Here, we would create 5 datasets, and each dataset would be analysed separately. This would result in 5 regression models, for example. In order to get our final set of results in the form of one single inference, we would combine (pool) the results (e.g., estimates, standard errors) of our 5 models using what is known as Rubin’s rules. This gives us our model estimates by averaging the separate coefficients, and allows us to observe the uncertainty within and across imputations, via confidence intervals.</p>
+<p><strong>Caveats</strong></p>
+<p>MI is often denoted as a gold-standard method of handling missingness. However, if the imputations are poorly constructed, the validity of the results will be questioned. MI, although elegant in its simplicity and now commonly used, remains a complex method. As such, it can be difficult to spot nuances of a poor imputation model. However, there are some quick ways to check if your imputations have gone wrong. These techniques include checking the convergence of your imputation models, usually in the form of spaghetti plots, and examining the distributional discrepancy (either graphically or via descriptive statistics), which is the difference in the distribution of imputed values against the distribution of observed values. Although the nature of the MAR mechanism would elicit some differences between observed and imputed data, anything overly dramatic unaccounted for by the data features would indicate misspecification of the imputation model. These diagnostics can be obtained from DigiCAT, in addition to a guide on how to interpret them, below.</p>
+<p><strong>Practical Considerations</strong></p>
+<p>Useful questions to ask:</p>
+<ul>
+<li>In my dataset, what percentage of units have data available for all variables in the analysis model?</li>
+<li>If I used another method, such as complete case analysis, how much data would be discarded?</li>
+<li>What patterns does my missing data follow? Are they regular?</li>
+<li>Would my analysis benefit from MI? Is it appropriate?</li>
+</ul>
+<p>If, after consulting your data, you believe MI would be an appropriate next step, you must then consider developing the imputation model that will generate your imputations. A common question may be “what variables should I include?”:</p>
+<ul>
+<li>Guidance within the MI literature would implore you to include at least all the variables from the intended analysis in the imputation model, in order to preserve the relationship between variables of interest.</li>
+<li>If possible, it is recommended that you also include variables that are not in the analysis model (termed auxiliary variables). For example, if you have access to repeated measurements of variables in your analysis model, these could be appropriate auxiliary variables, as they would correlate with incomplete variables, and aid the imputation model in predicting the missing values.</li>
+<li>Research also would advocate for inclusion, if possible, of predictors of missingness in the imputation model to improve MAR assumption plausibility and reduce the demand to adjust for MNAR mechanisms.</li>
+</ul>
+<p>By default, DigiCAT will, by default, aim to include all the data you upload in the imputation model. The algorithm employed ( MICE – multivariate imputation by chained equations) will provide a ‘predictor matrix’, and the default setting is that each variable predicts all others. If, however, the algorithm detects multicollinearity in your data, it will automatically aim to resolve this issue via removal of one (or more) predictors. If this occurs, the event will be ‘logged’, and you may request both the logged events and the predictor matrix of your imputations from DigiCAT.</p>
+<p>So, you may now have an idea of what variables to include in your imputation analysis. Your next question may be “what model should I use?”</p>
+<p>The MICE algorithm leveraged in DigiCAT will require a univariate imputation method for each variable that contains missingness; the selection of this method is heavily driven by measurement level – numerical, binary, categorical. Luckily, the algorithm used will detect this measurement level and the according method will be selected by default: numeric (predictive mean matching), binary - factor with 2 levels (logistic regression), nominal/unordered categorical – factor with &gt;2 levels (polytomous logistic regression), and ordinal/ordered categorical – ordered factor with &gt;2 levels (proportional odds model). In general, these defaults are well-informed and may cover your data well. However, in some cases, another method may be superior. For further reading, you may consult the provided references to learn more about other methods which may better suit the needs of your data.</p>
+<p>And “how many imputed datasets do I need?”</p>
+<p>In DigiCAT, the number of imputed datasets (m) is set to 5 by default, in order to accept a wide range of datasets, without being too computationally demanding. However, you may wish to alter m, based on the amount of missings. There is no definitive number for m, however, many guidelines and rules of thumb have been suggested, which we cover below. It is possible to increase m within DigiCAT, though we set a limit at X for practical reasons. If you wish to increase m beyond this limit, we implore you to download the R script at the end of the analysis and re-run it with more imputed datasets on your own machine.</p>
+<p>Why would you want to adjust m? Essentially, as imputed estimates are derived from a random sample of m datasets, the estimates include random sampling variation (imputation variation). This means that estimates from m datasets are variable (thus may be considered inefficient and non-replicable), in comparison to asymptotic estimates generated if the data were imputed an infinite number of times. These issues can be reduced by increasing m.</p>
+<p>Historically, as few as 3-10 imputations have been considered sufficient. However, this may be specific to point estimates only; if we also want to obtain replicable standard error (SE) estimates, this often may need to be increased, and some suggestions stretch as far as m = 200.</p>
+<p>A recent two-step approach to approximating m can be tailored to your data and may provide an efficient way of deciding m, proposed by Von Hippel, below:</p>
+<p><span class="math display">\[
+M = 1 + \frac{1}{2} \left( \frac{FMI}{CV(SE)} \right)
+\]</span></p>
+<p>FMI is the fraction of missing information – that is, the fraction by which the squared SE would shrink if the data were complete.</p>
+<p>CV() is a coefficient of variation – that is, the percentage by which you’d be willing to accept the SE change if the data were re-imputed.</p>
+<p>However, there are some caveats to note to calculate this appropriately, and users should read the recommended references and further reading if they wish to follow up on this approach.</p>
+<p>A third alternative approach to estimate m is termed iterative multiple imputation. Here, you would keep increasing m until estimates converge, or variation becomes negligible with the addition of further datasets.</p>
+<p>“How many iterations do I need?”</p>
+<p>It’s important that all imputations for all variables reach convergence, and this can be visually identified via inspection of convergence plots. To reach convergence, generally 20-30 iterations are needed, or even less. The default in DigiCAT is 20. You may examine convergence via requesting spaghetti plots in DigiCAT.</p>
+<p>[which links to… diagnosis and evaluation of imputations]</p>
+<ul>
+<li>Reading convergence plots</li>
+<li>Examining imputed values</li>
+<li>Distributional discrepancy/comparisons between observed versus imputed data</li>
+<li>Regression diagnostics - residuals</li>
+<li>Cross-validation</li>
+<li>PPC</li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

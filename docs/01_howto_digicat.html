@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DigiCAT Tutorials - Further reading</title>
+<title>DigiCAT Tutorials - 1. The DigiCAT Tool</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -87,7 +121,7 @@ if(f.classList.contains('fa-hand-o-right')) {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./further.html">Further reading</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_howto_digicat.html">1. The DigiCAT Tool</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -120,32 +154,44 @@ if(f.classList.contains('fa-hand-o-right')) {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./howto_digicat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">The DigiCAT Tool</span></a>
+  <a href="./01_howto_digicat.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1. The DigiCAT Tool</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro_cf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Introduction to counterfactual analysis</span></a>
+  <a href="./02_introcf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Introduction to Counterfactual Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./missing.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dealing with missing data</span></a>
+  <a href="./03_choosecf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Choosing a Counterfactual Analysis Approach</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./survey.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Dealing with complex survey data</span></a>
+  <a href="./04_cfmethod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. Counterfactual Methods</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./further.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">Further reading</span></a>
+  <a href="./05_missing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Missing Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_survey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Complex Survey Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_further.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements &amp; Further reading</span></a>
   </div>
 </li>
     </ul>
@@ -154,14 +200,26 @@ if(f.classList.contains('fa-hand-o-right')) {
 <div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-develop-digicat" id="toc-why-develop-digicat" class="nav-link active" data-scroll-target="#why-develop-digicat">Why develop DigiCAT?</a></li>
+  <li><a href="#how-to-use-digicat" id="toc-how-to-use-digicat" class="nav-link" data-scroll-target="#how-to-use-digicat">How to use DigiCAT</a></li>
+  <li><a href="#involving-lived-experience-expertise-alongside-the-tool" id="toc-involving-lived-experience-expertise-alongside-the-tool" class="nav-link" data-scroll-target="#involving-lived-experience-expertise-alongside-the-tool">Involving Lived Experience Expertise alongside the Tool</a>
+  <ul class="collapse">
+  <li><a href="#why-should-the-research-use-lived-experience-expertise" id="toc-why-should-the-research-use-lived-experience-expertise" class="nav-link" data-scroll-target="#why-should-the-research-use-lived-experience-expertise">Why should the research use Lived Experience expertise ?</a></li>
+  <li><a href="#how-should-the-research-use-lived-experience-expertise" id="toc-how-should-the-research-use-lived-experience-expertise" class="nav-link" data-scroll-target="#how-should-the-research-use-lived-experience-expertise">How should the research use Lived Experience expertise?</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Further reading</h1>
+<h1 class="title">1. The DigiCAT Tool</h1>
 </div>
 
 
@@ -176,8 +234,61 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 </header>
 
+<section id="why-develop-digicat" class="level2">
+<h2 class="anchored" data-anchor-id="why-develop-digicat">Why develop DigiCAT?</h2>
+<p>Counterfactual analysis provides a set of tools that can help us understand what the active ingredients are in mental health. While the gold standard for doing so would be something like a randomised controlled trial (RCT), RCTs are not always possible and when they are, they are expensive and challenging to do well. Their highly controlled nature also means that they may lack ecological validity so that results from RCTs might not apply very well in the real world.</p>
+<p>As such there is a lot of value in being able to get an idea of what might impact mental health from observational data (I.e., non-experimental data). In fact, there is a wealth of pre-existing mental health data ready to be used in this way. Some examples of such datasets can be found in, for example, this catalogue of mental health datasets: <a href="https://www.cataloguementalhealth.ac.uk/" target="_blank">https://www.cataloguementalhealth.ac.uk/</a></p>
+<p>However, we noticed that counterfactual analysis is not as widely used in mental health research as one might expect. There may be a number of reasons for this but we think a major one is that counterfactual analysis might not be very accessible for mental health researchers. It would not typically be part of training and it can be technically quite complex, which may limit researcher’s ability to use it. There’s also a lack of accessible tools for counterfactual analysis. Most tools require coding skills and while some web applications exist they don’t do everything. In particular, their functionality tends to be narrowly focused on a particular type of analysis and they tend not be able to deal with the ‘real world’ features of data like the presence of missingness or complex survey data or non-binary treatments. These are things we wanted to address with DigiCAT.</p>
+<p>Another reason we made DigiCAT is we noticed that it took rather a long time to code counterfactual analyses using existing packages and things got complicated when we had to consider things like missingness, clustering, large numbers of confounders etc. By pulling together all the code from common ‘journeys’ and creating an easy ‘point and click’ interface we also aim to speed up the implementation of counterfactual analysis even for expert users adept in the technique in existing softwares like R.</p>
+</section>
+<section id="how-to-use-digicat" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-digicat">How to use DigiCAT</h2>
+<p>There are two ways to use DigiCAT. The first is to download it and use it on your local computer. This is recommended if you need to avoid uploading your data to a server or if you have a very large dataset or very computationally intensive analyses. The second way to use it is via the web application. The two versions are mostly very similar but the web application has a few more limits on it.</p>
+<p><strong>R Package</strong></p>
+<p>To use DigiCAT on your local computer you should have a recent version of R installed. Within R you can then enter the following lines to install and then run DigiCAT. Once it is installed you only need to run the third line to launch it each time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"josiahpjking/DigiCAT@develop"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>DigiCAT<span class="sc">::</span><span class="fu">run_DigiCAT</span>(<span class="at">enableLocal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><strong>Web Version</strong></p>
+<p>The web version of DigiCAT is available at <a href="https://digicatapp.shinyapps.io/DigiCAT" target="_blank">https://digicatapp.shinyapps.io/DigiCAT</a></p>
+<ul>
+<li>TODO Tree diagram of DigiCAT options</li>
+</ul>
+</section>
+<section id="involving-lived-experience-expertise-alongside-the-tool" class="level2">
+<h2 class="anchored" data-anchor-id="involving-lived-experience-expertise-alongside-the-tool">Involving Lived Experience Expertise alongside the Tool</h2>
+<section id="why-should-the-research-use-lived-experience-expertise" class="level3">
+<h3 class="anchored" data-anchor-id="why-should-the-research-use-lived-experience-expertise">Why should the research use Lived Experience expertise ?</h3>
+<ul>
+<li>Reminder of the subjective nature of mental health<br>
+</li>
+<li>Bring the Qualitative into the Quantitative analysis<br>
+</li>
+<li>Strengthen your research. Increasingly, co-production and PPI (patient and public involvement) is required for funding. This should be taken seriously, rather than treated as an add-on or in a tokenistic way.<br>
+</li>
+<li>Practical application – How does it relate to real experiences? Hone in on practically relevant research questions. Facilitate clinical validity of the interpretation of research findings<br>
+</li>
+<li>Assess likely efficacy in real world application of findings (if applicable)<br>
+</li>
+<li>Positive impact for lived experience collaborators. Empowerment, purpose, acquisition of new skills and knowledge, and having a role in changing and improving mental health research and interventions.</li>
+</ul>
+</section>
+<section id="how-should-the-research-use-lived-experience-expertise" class="level3">
+<h3 class="anchored" data-anchor-id="how-should-the-research-use-lived-experience-expertise">How should the research use Lived Experience expertise?</h3>
+<p>There is not one single definition of lived experience, and so it can come in many forms. It might include those who have previously or continue to experience mental illness difficulties, but it can also include family members of those who have experienced it.</p>
+<p>Those with lived experience may already be working in the academy, so it is also fruitful to engage with colleagues (across disciplines) who may bring in a unique lived experience perspective.</p>
+<p>For example, in exploring active ingredients of mental health, a young person’s advisory group were asked to rank their importance, explain reasons, and add other things. This exercise demonstrated that having access to ‘social media’ was a more important factor than initially expected by the researchers.</p>
+<p>Upon further exploration in the advisory group, it was revealed that ‘social media’ was important in order to keep in touch with friends. As one young person pointed out: “It’s very important to have a lot of friends and to really stick together because they are one of the only people that are there in all of the situations”. This suggests that exploring use of social media would have been misleading without understanding why the young people thought this was important.</p>
+<p>Similarly, ‘recovery’ can mean different things to different people, and understanding alternative meanings and framings can have a substantial positive impact on the research.</p>
+<p>As researchers (and individuals) we come to what we do with our set of biases and expectations, it is therefore a good idea to run our interpretations by third parties with lived experience in the area we are wishing to inform.</p>
+<p>In addition to publishing in scientific journals it is important to present the findings in ways that are easy to understand and utilise for those for whom they are most practically relevant; that is service users and generally those with lived experience. Such communications are best produced in collaboration with them.</p>
+<p>Collaboration with lived experience experts increases credibility and practical reliability and applications of research findings.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
