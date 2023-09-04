@@ -31,7 +31,7 @@ To use DigiCAT on your local computer you should have a recent version of R inst
 ```{r}
 #| eval: false
 install.packages("remotes") 
-remotes::install_github("josiahpjking/DigiCAT")
+remotes::install_github("uoe-digicat/DigiCAT")
 DigiCAT::run_DigiCAT()
 ```
 
