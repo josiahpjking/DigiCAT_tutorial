@@ -75,8 +75,6 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 <script src="https://kit.fontawesome.com/120b08a6f5.js" crossorigin="anonymous"></script>
 
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -117,31 +115,31 @@ if(f.classList.contains('fa-hand-o-right')) {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">DigiCAT Tutorial Pages</span></a>
+ <span class="menu-text">DigiCAT Tutorials</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_howto_digicat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. The DigiCAT Tool</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02_introcf.html" class="sidebar-item-text sidebar-link">
+  <a href="./01_introcf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2. Introduction to Counterfactual Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./02_howto_digicat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Using DigiCAT</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./03_choosecf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Choosing a Counterfactual Analysis Approach</span></a>
+ <span class="menu-text">3. Choosing a Method</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_cfmethod.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Counterfactual Methods</span></a>
+ <span class="menu-text">4. DigiCAT Methods</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -178,8 +176,9 @@ if(f.classList.contains('fa-hand-o-right')) {
   <li><a href="#missing-data-mechanisms" id="toc-missing-data-mechanisms" class="nav-link" data-scroll-target="#missing-data-mechanisms">Missing data mechanisms</a></li>
   <li><a href="#approaches-available-in-digicat" id="toc-approaches-available-in-digicat" class="nav-link" data-scroll-target="#approaches-available-in-digicat">Approaches available in DigiCAT</a>
   <ul class="collapse">
-  <li><a href="#complete-case-analysis" id="toc-complete-case-analysis" class="nav-link" data-scroll-target="#complete-case-analysis">complete case analysis</a></li>
-  <li><a href="#multiple-imputation" id="toc-multiple-imputation" class="nav-link" data-scroll-target="#multiple-imputation">multiple imputation</a></li>
+  <li><a href="#complete-case-analysis" id="toc-complete-case-analysis" class="nav-link" data-scroll-target="#complete-case-analysis">Complete case analysis</a></li>
+  <li><a href="#non-response-weighting" id="toc-non-response-weighting" class="nav-link" data-scroll-target="#non-response-weighting">Non-response weighting</a></li>
+  <li><a href="#multiple-imputation" id="toc-multiple-imputation" class="nav-link" data-scroll-target="#multiple-imputation">Multiple imputation</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -242,17 +241,46 @@ if(f.classList.contains('fa-hand-o-right')) {
 <section id="approaches-available-in-digicat" class="level2">
 <h2 class="anchored" data-anchor-id="approaches-available-in-digicat">Approaches available in DigiCAT</h2>
 <section id="complete-case-analysis" class="level3">
-<h3 class="anchored" data-anchor-id="complete-case-analysis">complete case analysis</h3>
+<h3 class="anchored" data-anchor-id="complete-case-analysis">Complete case analysis</h3>
 <p>If your dataset contains missing values, standard software that is intended to perform complete-data analyses may either stop processing and present an error message, or analyse only the completely observed cases; they are seldom prepared to handle datasets with missingness. Therefore, as in the case of the latter example, the software may perform pragmatic decisions, without theoretical justification, in order to allow your analysis to proceed. However, in cases such as this, your inferences may be invalid. Perhaps the most common ad-hoc method, as described here, is complete case analysis (CCA), in which only the completely observed cases are entered into the analysis. CCA will yield valid inferences if the MDM is MCAR, as the observed values would therefore be considered a random sample from the complete dataset. Yet, as we known from our knowledge on assumptions, generally CCA may lead to invalid inferences if missing values are MAR or MNAR.</p>
 </section>
+<section id="non-response-weighting" class="level3">
+<h3 class="anchored" data-anchor-id="non-response-weighting">Non-response weighting</h3>
+<p>Many datasets include non-response weights or ‘attrition’ weights that can be used to deal within missing data under a ‘missing at random’ (MAR) assumption (see above for the definition of MAR). These weights account for bias due to unit- or case-wise non-response by up-weighting cases that were unlikely to be observed in the sample and down-weighting those that were highly likely to be observed in the sample. This helps to make the sample more similar to the underlying ‘complete’ sample of people who are and aren’t missing. It does so by incorporating non-response weights in a weighted regression in the same way as sampling weights are incorporated within complex sampling designs (see ‘complex survey data’).</p>
+</section>
 <section id="multiple-imputation" class="level3">
-<h3 class="anchored" data-anchor-id="multiple-imputation">multiple imputation</h3>
+<h3 class="anchored" data-anchor-id="multiple-imputation">Multiple imputation</h3>
 <p>When we refer to imputation, we refer to the process in which we replace missing values in our dataset with plausible values that may have been observed. Unlike the methods discussed above, imputation allows us to make use of all of our data, and to use standard methods, designed for complete-data analysis. For example, if we had a variable, ‘height’, which contained a missing value, we may replace it with a single plausible value – such as the mean of the non-missing values for this variable. This would be an example of a single imputation method. However, in practice our variables likely associate, and we must further acknowledge that there is some degree of uncertainty about our estimate (we are not 100% sure our imputed value is the true value). Single imputation methods do not account for these factors.</p>
 <p>However, an approach that does recognise this uncertainty is ‘multiple imputation’ (MI). MI acknowledges this uncertainty by creating multiple versions of imputed datasets, with each dataset representing one possible complete dataset, with different estimates of the missing values. Generally, these estimates are the result of a regression model, in which incomplete variables are the outcome, and complete variables are predictors. An iterative algorithm employs Bayesian estimation to update these regression parameters, to ensure that imputations are not drawn from one single set, and that new estimates generate each set of imputations.</p>
 <p>We can choose how many datasets (often noted ‘m’) to create; the default in DigiCAT is m = 5. Here, we would create 5 datasets, and each dataset would be analysed separately. This would result in 5 regression models, for example. In order to get our final set of results in the form of one single inference, we would combine (pool) the results (e.g., estimates, standard errors) of our 5 models using what is known as Rubin’s rules. This gives us our model estimates by averaging the separate coefficients, and allows us to observe the uncertainty within and across imputations, via confidence intervals.</p>
-<p><strong>Caveats</strong></p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Caveats
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>MI is often denoted as a gold-standard method of handling missingness. However, if the imputations are poorly constructed, the validity of the results will be questioned. MI, although elegant in its simplicity and now commonly used, remains a complex method. As such, it can be difficult to spot nuances of a poor imputation model. However, there are some quick ways to check if your imputations have gone wrong. These techniques include checking the convergence of your imputation models, usually in the form of spaghetti plots, and examining the distributional discrepancy (either graphically or via descriptive statistics), which is the difference in the distribution of imputed values against the distribution of observed values. Although the nature of the MAR mechanism would elicit some differences between observed and imputed data, anything overly dramatic unaccounted for by the data features would indicate misspecification of the imputation model. These diagnostics can be obtained from DigiCAT, in addition to a guide on how to interpret them, below.</p>
-<p><strong>Practical Considerations</strong></p>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Practical Considerations
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
 <p>Useful questions to ask:</p>
 <ul>
 <li>In my dataset, what percentage of units have data available for all variables in the analysis model?</li>
@@ -263,35 +291,37 @@ if(f.classList.contains('fa-hand-o-right')) {
 <p>If, after consulting your data, you believe MI would be an appropriate next step, you must then consider developing the imputation model that will generate your imputations. A common question may be “what variables should I include?”:</p>
 <ul>
 <li>Guidance within the MI literature would implore you to include at least all the variables from the intended analysis in the imputation model, in order to preserve the relationship between variables of interest.</li>
-<li>If possible, it is recommended that you also include variables that are not in the analysis model (termed auxiliary variables). For example, if you have access to repeated measurements of variables in your analysis model, these could be appropriate auxiliary variables, as they would correlate with incomplete variables, and aid the imputation model in predicting the missing values.</li>
+<li>If possible, it is recommended that you also include variables that are not in the analysis model (termed auxiliary variables). For example, if you have access to repeated measurements of variables in your analysis model, these could be appropriate auxiliary variables, as they would correlate with incomplete variables, and aid the imputation model in predicting the missing values. These can be included in DigiCAT by selecting them as ‘additional covariates’.<br>
+</li>
 <li>Research also would advocate for inclusion, if possible, of predictors of missingness in the imputation model to improve MAR assumption plausibility and reduce the demand to adjust for MNAR mechanisms.</li>
 </ul>
 <p>By default, DigiCAT will, by default, aim to include all the data you upload in the imputation model. The algorithm employed ( MICE – multivariate imputation by chained equations) will provide a ‘predictor matrix’, and the default setting is that each variable predicts all others. If, however, the algorithm detects multicollinearity in your data, it will automatically aim to resolve this issue via removal of one (or more) predictors. If this occurs, the event will be ‘logged’, and you may request both the logged events and the predictor matrix of your imputations from DigiCAT.</p>
-<p>So, you may now have an idea of what variables to include in your imputation analysis. Your next question may be “what model should I use?”</p>
-<p>The MICE algorithm leveraged in DigiCAT will require a univariate imputation method for each variable that contains missingness; the selection of this method is heavily driven by measurement level – numerical, binary, categorical. Luckily, the algorithm used will detect this measurement level and the according method will be selected by default: numeric (predictive mean matching), binary - factor with 2 levels (logistic regression), nominal/unordered categorical – factor with &gt;2 levels (polytomous logistic regression), and ordinal/ordered categorical – ordered factor with &gt;2 levels (proportional odds model). In general, these defaults are well-informed and may cover your data well. However, in some cases, another method may be superior. For further reading, you may consult the provided references to learn more about other methods which may better suit the needs of your data.</p>
-<p>And “how many imputed datasets do I need?”</p>
-<p>In DigiCAT, the number of imputed datasets (m) is set to 5 by default, in order to accept a wide range of datasets, without being too computationally demanding. However, you may wish to alter m, based on the amount of missings. There is no definitive number for m, however, many guidelines and rules of thumb have been suggested, which we cover below. It is possible to increase m within DigiCAT, though we set a limit at X for practical reasons. If you wish to increase m beyond this limit, we implore you to download the R script at the end of the analysis and re-run it with more imputed datasets on your own machine.</p>
+<p>So, you may now have an idea of what variables to include in your imputation analysis. Your next question may be <strong>“what model should I use?”</strong></p>
+<p>The method leveraged in DigiCAT uses random forest as an ‘imputation model’ to guess what the missing values would have been had they been observed. Random forest is a type of machine learning method that produces and aggregates the results of lots of decision trees and has the advantage of tending to perform better than traditional regression methods for prediction. In multiple imputation models it has the advantage of being able to approximate non-linear functions so it reduces the dependence on having to correctly specify the imputation model. In general, these defaults are well-informed and may cover your data well. However, in some cases, another method may be superior. For further reading, you may consult the provided references to learn more about other methods which may better suit the needs of your data.</p>
+<p><strong>“How many imputed datasets do I need?”</strong></p>
+<p>In DigiCAT, the number of imputed datasets (m) is set to 5 by default, in order to accept a wide range of datasets, without being too computationally demanding. However, you may wish to alter m, based on the amount of missings. There is no definitive number for m, however, many guidelines and rules of thumb have been suggested, which we cover below. If you wish to increase m beyond this limit, we implore you to download the R script at the end of the analysis and re-run it with more imputed datasets on your own machine.</p>
 <p>Why would you want to adjust m? Essentially, as imputed estimates are derived from a random sample of m datasets, the estimates include random sampling variation (imputation variation). This means that estimates from m datasets are variable (thus may be considered inefficient and non-replicable), in comparison to asymptotic estimates generated if the data were imputed an infinite number of times. These issues can be reduced by increasing m.</p>
 <p>Historically, as few as 3-10 imputations have been considered sufficient. However, this may be specific to point estimates only; if we also want to obtain replicable standard error (SE) estimates, this often may need to be increased, and some suggestions stretch as far as m = 200.</p>
-<p>A recent two-step approach to approximating m can be tailored to your data and may provide an efficient way of deciding m, proposed by Von Hippel, below:</p>
-<p><span class="math display">\[
-M = 1 + \frac{1}{2} \left( \frac{FMI}{CV(SE)} \right)
-\]</span></p>
-<p>FMI is the fraction of missing information – that is, the fraction by which the squared SE would shrink if the data were complete.</p>
-<p>CV() is a coefficient of variation – that is, the percentage by which you’d be willing to accept the SE change if the data were re-imputed.</p>
-<p>However, there are some caveats to note to calculate this appropriately, and users should read the recommended references and further reading if they wish to follow up on this approach.</p>
-<p>A third alternative approach to estimate m is termed iterative multiple imputation. Here, you would keep increasing m until estimates converge, or variation becomes negligible with the addition of further datasets.</p>
-<p>“How many iterations do I need?”</p>
-<p>It’s important that all imputations for all variables reach convergence, and this can be visually identified via inspection of convergence plots. To reach convergence, generally 20-30 iterations are needed, or even less. The default in DigiCAT is 20. You may examine convergence via requesting spaghetti plots in DigiCAT.</p>
-<p>[which links to… diagnosis and evaluation of imputations]</p>
-<ul>
-<li>Reading convergence plots</li>
-<li>Examining imputed values</li>
-<li>Distributional discrepancy/comparisons between observed versus imputed data</li>
-<li>Regression diagnostics - residuals</li>
-<li>Cross-validation</li>
-<li>PPC</li>
-</ul>
+<!-- A recent two-step approach to approximating m can be tailored to your data and may provide an efficient way of deciding m, proposed by Von Hippel, below:   -->
+<!-- $$ -->
+<!-- M = 1 + \frac{1}{2} \left( \frac{FMI}{CV(SE)} \right) -->
+<!-- $$   -->
+<!-- FMI is the fraction of missing information – that is, the fraction by which the squared SE would shrink if the data were complete.    -->
+<!-- CV() is a coefficient of variation – that is, the percentage by which you'd be willing to accept the SE change if the data were re-imputed. -->
+<!-- However, there are some caveats to note to calculate this appropriately, and users should read the recommended references and further reading if they wish to follow up on this approach.   -->
+<!-- A third alternative approach to estimate m is termed iterative multiple imputation. Here, you would keep increasing m until estimates converge, or variation becomes negligible with the addition of further datasets.   -->
+<!-- "How many iterations do I need?"   -->
+<!-- It's important that all imputations for all variables reach convergence, and this can be visually identified via inspection of convergence plots. To reach convergence, generally 20-30 iterations are needed, or even less. The default in DigiCAT is 20. You may examine convergence via requesting spaghetti plots in DigiCAT.    -->
+<!-- [which links to... diagnosis and evaluation of imputations]   -->
+<!-- -  Reading convergence plots -->
+<!-- -  Examining imputed values -->
+<!-- -  Distributional discrepancy/comparisons between observed versus imputed data -->
+<!-- -  Regression diagnostics - residuals -->
+<!-- -  Cross-validation -->
+<!-- -  PPC  -->
+</div>
+</div>
+</div>
 
 
 </section>

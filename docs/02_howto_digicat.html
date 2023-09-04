@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.3.340">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>DigiCAT Tutorials - 1. Using DigiCAT</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<script>
+function toggle_visibility(id1, id2) {
+var e = document.getElementById(id1);
+var f = document.getElementById(id2);
+e.style.display = ((e.style.display!='none') ? 'none' : 'block');
+if(f.classList.contains('fa-hand-o-right')) {
+    f.classList.add('fa-hand-o-down')
+    f.classList.remove('fa-hand-o-right')
+} else {
+    f.classList.add('fa-hand-o-right')
+    f.classList.remove('fa-hand-o-down')
+}
+}
+</script>
+
+<script src="https://kit.fontawesome.com/120b08a6f5.js" crossorigin="anonymous"></script>
+
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./02_howto_digicat.html">1. Using DigiCAT</a></li></ol></nav>
+      <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+      </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">DigiCAT Tutorials</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">DigiCAT Tutorials</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./01_introcf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">2. Introduction to Counterfactual Analysis</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02_howto_digicat.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">1. Using DigiCAT</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03_choosecf.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">3. Choosing a Method</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04_cfmethod.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">4. DigiCAT Methods</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05_missing.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">5. Missing Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06_survey.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">6. Complex Survey Data</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07_further.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Acknowledgements &amp; Further reading</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-develop-digicat" id="toc-why-develop-digicat" class="nav-link active" data-scroll-target="#why-develop-digicat">Why develop DigiCAT?</a></li>
+  <li><a href="#our-approach" id="toc-our-approach" class="nav-link" data-scroll-target="#our-approach">Our approach</a></li>
+  <li><a href="#how-to-get-digicat" id="toc-how-to-get-digicat" class="nav-link" data-scroll-target="#how-to-get-digicat">How to get DigiCAT</a></li>
+  <li><a href="#how-to-use-digicat" id="toc-how-to-use-digicat" class="nav-link" data-scroll-target="#how-to-use-digicat">How to use DigiCAT</a></li>
+  <li><a href="#example-dataset" id="toc-example-dataset" class="nav-link" data-scroll-target="#example-dataset">Example Dataset</a></li>
+  <li><a href="#counterfactual-analyses-informed-by-lived-experience-experts" id="toc-counterfactual-analyses-informed-by-lived-experience-experts" class="nav-link" data-scroll-target="#counterfactual-analyses-informed-by-lived-experience-experts">Counterfactual Analyses informed by lived experience experts</a>
+  <ul class="collapse">
+  <li><a href="#why-should-the-research-use-lived-experience-expertise" id="toc-why-should-the-research-use-lived-experience-expertise" class="nav-link" data-scroll-target="#why-should-the-research-use-lived-experience-expertise">Why should the research use Lived Experience expertise ?</a></li>
+  <li><a href="#how-should-the-research-use-lived-experience-expertise" id="toc-how-should-the-research-use-lived-experience-expertise" class="nav-link" data-scroll-target="#how-should-the-research-use-lived-experience-expertise">How should the research use Lived Experience expertise?</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">1. Using DigiCAT</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="why-develop-digicat" class="level2">
+<h2 class="anchored" data-anchor-id="why-develop-digicat">Why develop DigiCAT?</h2>
+<p>Counterfactual analysis provides a set of tools that can help us understand what the active ingredients are in mental health. While the gold standard for doing so would be something like a randomised controlled trial (RCT), RCTs are not always possible and when they are, they are expensive and challenging to do well. Their highly controlled nature also means that they may lack ecological validity so that results from RCTs might not apply very well in the real world.</p>
+<p>As such there is a lot of value in being able to get an idea of what might impact mental health from observational data (I.e., non-experimental data). In fact, there is a wealth of pre-existing mental health data ready to be used in this way. Some examples of such datasets can be found in, for example, this catalogue of mental health datasets: <a href="https://www.cataloguementalhealth.ac.uk/" target="_blank">https://www.cataloguementalhealth.ac.uk/</a></p>
+<p>However, we noticed that counterfactual analysis is not as widely used in mental health research as one might expect. There may be a number of reasons for this but we think a major one is that counterfactual analysis might not be very accessible for mental health researchers. It would not typically be part of training and it can be technically quite complex, which may limit researcher’s ability to use it. There’s also a lack of accessible tools for counterfactual analysis. Most tools require coding skills and while some web applications exist they don’t do everything. In particular, their functionality tends to be narrowly focused on a particular type of analysis and they tend not be able to deal with the ‘real world’ features of data like the presence of missingness or complex survey data or non-binary treatments. These are things we wanted to address with DigiCAT.</p>
+<p>Another reason we made DigiCAT is we noticed that it took rather a long time to code counterfactual analyses using existing packages and things got complicated when we had to consider things like missingness, clustering, large numbers of confounders etc. By pulling together all the code from common ‘journeys’ and creating an easy ‘point and click’ interface we also aim to speed up the implementation of counterfactual analysis even for expert users adept in the technique in existing softwares like R.</p>
+</section>
+<section id="our-approach" class="level2">
+<h2 class="anchored" data-anchor-id="our-approach">Our approach</h2>
+<p>DigiCAT was built with FAIR principles: <a href="https://www.go-fair.org/fair-principles/" target="_blank">https://www.go-fair.org/fair-principles/</a> in mind and is therefore built in open source software R and Shiny. All code is available at the DigiCAT github and you can also download the code for your specific analysis by clicking ‘Download R script’ at the end of the workflow. This is also useful if you would like to build on the analyses offered in DigiCAT: it provides a script that you can adapt, extend, and otherwise customise to your needs. DigiCAT development also took a user centred approach and many features have been adapted based on the helpful input we received from our user engagements. It is also informed by lived experience expert input and you can read more about below about how you might draw on lived experience expertise in planning, interpreting and disseminating your analyses using the tool.</p>
+</section>
+<section id="how-to-get-digicat" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-get-digicat">How to get DigiCAT</h2>
+<p>There are two ways to use DigiCAT. The first is to download it and use it on your local computer. This is recommended if you need to avoid uploading your data to a server or if you have a very large dataset or very computationally intensive analyses. The second way to use it is via the web application. The two versions are mostly very similar but the web application has a few more limits. These limits are to help ensure data security and to limit very computationally demanding analyses (that would take a long time to run). These types of analyses are better to do with the package version.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+R Package
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>To use DigiCAT on your local computer you should have a recent version of R installed. Within R you can then enter the following lines to install and then run DigiCAT. Once it is installed you only need to run the third line to launch it each time.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"josiahpjking/DigiCAT"</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>DigiCAT<span class="sc">::</span><span class="fu">run_DigiCAT</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Web Version
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The web version of DigiCAT is available at <a href="https://digicatapp.shinyapps.io/DigiCAT" target="_blank">https://digicatapp.shinyapps.io/DigiCAT</a>. For the moment we have disabled data upload until we move it over to a new server. However, you can use the example dataset pre-loaded with the tool to explore its features.</p>
+</div>
+</div>
+</section>
+<section id="how-to-use-digicat" class="level2">
+<h2 class="anchored" data-anchor-id="how-to-use-digicat">How to use DigiCAT</h2>
+<p>Both the downloadable and package version of DigiCAT guide you through a journey which begins with data upload (or loading of example datasets) then proceeds through the selection of a counterfactual analysis approach, a balancing stage, and an outcome model stage. Each of these is explained in turn below and more details of the specific methods offered are provided in later sections.</p>
+<section id="data-upload" class="level4">
+<h4 class="anchored" data-anchor-id="data-upload">Data upload</h4>
+<p>The downloadable version of DigiCAT allows users to upload data. This data should be in .csv format and include variable headers. All the data should be in ‘numeric’ form meaning that only numbers can be used to represent variable values. This means that variable labels should be recoded as numbers, e.g., ‘yes = 1; no=0’. Missing values should be coded as ‘NA’ which is the convention that R, the tool that powers DigiCAT uses to represent missing values.</p>
+<p>One a file has been selected for upload you are then able to flag any categorical variables. This is to ensure that they are properly treated as categorical. You also select your outcome variable (e.g., ‘anxiety’, your treatment variable (e.g., ‘social media use’) and your matching variables (e.g., ‘gender, socioeconomic status’ etc.). You can also select any additional covariates that you want to include in your outcome model but that you don’t want to use as matching variables. These might be selected if you want to estimate a treatment effect over and above the effects of other influences on mental health (e.g., the effect of social media use after adjusting for the effects of physical activity).</p>
+<p>Finally, DigiCAT has been built to handle complex survey data which is commonly seem in large-scale mental health studies. For datasets like this you can select a survey weight or non-response weight variable. If only a survey weight variable is available you can select ‘select if data includes survey weight’. If a non-response or attrition weight is available then you can additionally select ‘select if survey weights above compensate for non-response’. Complex survey datasets also commonly include clustering and stratification variables which can also be selected at the data upload stage.,</p>
+<p>Once the various variables have been selected only these will be carried forward for analysis. After uploading the data and selecting your variables you can then click ‘validate data’ and DigiCAT will perform some checks to make sure the data are all in the right format no issues with the analysis are anticipated.</p>
+</section>
+<section id="approach" class="level4">
+<h4 class="anchored" data-anchor-id="approach">Approach</h4>
+<p>After uploading the data and validating it you can then proceed to the ‘Approach’ page which is where you select your counterfactual analysis and missingness approaches. Note that on this page you will only be shown options that are applicable to the data you uploaded/selected. For example, if your treatment variable is binary you will only be shown counterfactual analysis options for binary treatments. Different options are shown for ordinal treatment variables. Similarly, you will only be shown non-response weighting as a missingness option if your variable selection included a non-response weight variable. Some approaches have more options than others. For example, for propensity score analysis for binary treatments it is relevant to choose a matching algorithm and matching ratio whereas for non-bipartite propensity matching (for ordinal treatments) these parameters are fixed (always optimal matching with a 1:1 ratio).</p>
+</section>
+<section id="balancing" class="level4">
+<h4 class="anchored" data-anchor-id="balancing">Balancing</h4>
+<p>After choosing a balancing approach and running the ‘balancing model’ some interim output will be shown that can be used to assess the quality of the balancing. Details of this output for specific methods are provided below.</p>
+</section>
+<section id="outcome" class="level4">
+<h4 class="anchored" data-anchor-id="outcome">Outcome</h4>
+<p>The outcome model stage uses the output from the balancing stage and fits a model to estimate the treatment effect. After selecting and running a model, the output tab provides the key information needed to see if the candidate treatment variable appears to have an impact on the outcome. An effect estimate, standard error, and p-value. For some methods marginal effects are also provided (see ‘marginal effects’ for more details). At this point you can also download the R script for your analysis.</p>
+</section>
+</section>
+<section id="example-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="example-dataset">Example Dataset</h2>
+<p>DigiCAT includes an example synthetic dataset which is based on the example here: <a href="TODO LINK">TODO LINK</a> which examined the effects of reading engagement on mental health. This can be used to help get to grips with counterfactual analysis, for teaching, or just to explore the features of DigiCAT. It includes a set of pre-selected matching, treatment and outcome variables. The treatment variable is reading engagement at age 15 and is offered as both a binary (‘Reading_age15’) and ordinal variable (‘ReadingO_age15) to allow different types of analyses to be explored. The outcome variable (’Anxiety_age17’) is a continuous measure of anxiety at age 17. The matching variables are a set of pre-treatment variables (measured at age 13 or before) that could confound the treatment-outcome association and should, therefore, be matched on. All categorical variables are pre-selected as such. The dataset also includes some missing data to allow exploration of the different missing data options. In the future we also plan to include datasets with complex survey features and other relevant features to allow all tool features to be explored with the example dataset as they are added.</p>
+<p>You can use the example dataset by selecting ‘Load example data’ in the Upload data page of DigiCAT. The ‘Data’ tab on the right-hand panel will then show you the data values, allowing you to inspect the dataset and get a feel for it. The data dictionary can be seen in Table 1 below. As per data upload requirements the file is in .csv format and codes missing values as ‘NA’.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tbl-dict" class="anchored">
+
+<div id="hwkflpkyij" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hwkflpkyij table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#hwkflpkyij thead, #hwkflpkyij tbody, #hwkflpkyij tfoot, #hwkflpkyij tr, #hwkflpkyij td, #hwkflpkyij th {
+  border-style: none;
+}
+
+#hwkflpkyij p {
+  margin: 0;
+  padding: 0;
+}
+
+#hwkflpkyij .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hwkflpkyij .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hwkflpkyij .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hwkflpkyij .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hwkflpkyij .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hwkflpkyij .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hwkflpkyij .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hwkflpkyij .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hwkflpkyij .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hwkflpkyij .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hwkflpkyij .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hwkflpkyij .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hwkflpkyij .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hwkflpkyij .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hwkflpkyij .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hwkflpkyij .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hwkflpkyij .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hwkflpkyij .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hwkflpkyij .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hwkflpkyij .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hwkflpkyij .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hwkflpkyij .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hwkflpkyij .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hwkflpkyij .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#hwkflpkyij .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hwkflpkyij .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hwkflpkyij .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hwkflpkyij .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hwkflpkyij .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hwkflpkyij .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hwkflpkyij .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hwkflpkyij .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hwkflpkyij .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hwkflpkyij .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hwkflpkyij .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hwkflpkyij .gt_left {
+  text-align: left;
+}
+
+#hwkflpkyij .gt_center {
+  text-align: center;
+}
+
+#hwkflpkyij .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hwkflpkyij .gt_font_normal {
+  font-weight: normal;
+}
+
+#hwkflpkyij .gt_font_bold {
+  font-weight: bold;
+}
+
+#hwkflpkyij .gt_font_italic {
+  font-style: italic;
+}
+
+#hwkflpkyij .gt_super {
+  font-size: 65%;
+}
+
+#hwkflpkyij .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hwkflpkyij .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hwkflpkyij .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hwkflpkyij .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hwkflpkyij .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hwkflpkyij .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hwkflpkyij .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false"><caption>Table&nbsp;1:  <p>Data Dictionary for DigiCAT example data</p> </caption>
+  <thead>
+    
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Variable.label">Variable.label</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Description">Description</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Type">Type</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="Values">Values</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="Variable.label" class="gt_row gt_left">Gender</td>
+<td headers="Description" class="gt_row gt_left">Participant gender</td>
+<td headers="Type" class="gt_row gt_left">Nominal</td>
+<td headers="Values" class="gt_row gt_left">1 = male, 2 = female*</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">Anxiety_age17</td>
+<td headers="Description" class="gt_row gt_left">Anxiety levels at age 17 as the average of a set of 10 anxiety items measured on a 4-point scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">Reading_age15</td>
+<td headers="Description" class="gt_row gt_left">A single item indicating whether a participant reads more or less than once a week at age 15</td>
+<td headers="Type" class="gt_row gt_left">Binary</td>
+<td headers="Values" class="gt_row gt_left">0 = no, 1 = yes</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">ReadingO_age15</td>
+<td headers="Description" class="gt_row gt_left">A single item indicating the extent to which participants' read at age 15</td>
+<td headers="Type" class="gt_row gt_left">Ordinal</td>
+<td headers="Values" class="gt_row gt_left">1 = least to 4 = most</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">AnxietyDepression_age13</td>
+<td headers="Description" class="gt_row gt_left">A combined measure of pre-treatment anxiety and depression levels at age 13. The average of 20 items on a 4-point scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">Trust_age13</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment generalised trust (a wellbeing measure). The average of 5 items on a 4-point scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">SelfControl_age13</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment self-control. The average of 5 items on a 4-point scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">SubstanceUse1_age13</td>
+<td headers="Description" class="gt_row gt_left"></td>
+<td headers="Type" class="gt_row gt_left">Binary</td>
+<td headers="Values" class="gt_row gt_left">0 = no, 1 = yes</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">SubstanceUse2_age13</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment cannabis use (whether the participant uses cannabis or not)</td>
+<td headers="Type" class="gt_row gt_left">Binary</td>
+<td headers="Values" class="gt_row gt_left">0 = no, 1 = yes</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">SubstanceUse3_age13</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment alcohol use (whether the participant uses alcohol or not)</td>
+<td headers="Type" class="gt_row gt_left">Binary</td>
+<td headers="Values" class="gt_row gt_left">0 = no, 1 = yes</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">SubstanceUse4_age13</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment hard drug (whether the participant uses hard drugs or not)</td>
+<td headers="Type" class="gt_row gt_left">Binary</td>
+<td headers="Values" class="gt_row gt_left">0 = no, 1 = yes</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">TeacherBond_age13</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment positive bond with teachers. The average of 4 items measured on a 4-point scale.</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">ClassBond_age13</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment positive bond with classmates. The average of 4 items measured on a 4-point scale.</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">SchoolDifficulties_age13</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment school difficulties. The average of 4 items measured on a 4-point scale.</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">Achievements1_age13</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment academic achievement in standardised tests of Science</td>
+<td headers="Type" class="gt_row gt_left">Ordinal</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 5 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">Achievements2_age13</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment academic achievement in standardised tests of Maths</td>
+<td headers="Type" class="gt_row gt_left">Ordinal</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 5 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">Achievements3_age13</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment academic achievement in standardised tests of English</td>
+<td headers="Type" class="gt_row gt_left">Ordinal</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 5 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">K5_nSBQ_REAGGR</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment (age 13) reactive aggression. The average of 10 items with a 4-point response scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">K5_nSBQ_PHYSAGGR</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment (age 13) physical aggression. The average of 10 items with a 4-point response scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">K5_nSBQ_PROAGGR</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment (age 13) proactive aggression. The average of 10 items with a 4-point response scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">K5_nSBQ_INDAGGR</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment (age 13) proactive aggression. The average of 10 items with a 4-point response scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">K5_nSBQ_PROSO</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment (age 13) prosociality. The average of 10 items with a 4-point response scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">K5_DevVar19</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment (age 13) deviant behaviour. A variety score combining 5 items on a 5-point scale (0-4)</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">K5_involv</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment (age 13) parental involvement. The average of 10 items with a 4-point response scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">K5_ResilAdult</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment (age 13) social support from adults. The average of 10 items with a 4-point response scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">K5_ResilFriends</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment (age 13) social support from friends. The average of 10 items with a 4-point response scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+    <tr><td headers="Variable.label" class="gt_row gt_left">K5_BullVict4</td>
+<td headers="Description" class="gt_row gt_left">A measure of pre-treatment (age 13) bullying victimisation. The average of 10 items with a 5-point response scale</td>
+<td headers="Type" class="gt_row gt_left">Continuous</td>
+<td headers="Values" class="gt_row gt_left">1 = lowest to 4 = highest</td></tr>
+  </tbody>
+  
+  
+</table>
+</div>
+</div>
+</div>
+</div>
+<p><span class="math inline">\(*\)</span>Note: this does not imply that we consider gender to be binary: no other genders than male or female happened to be reported in this sample.</p>
+</section>
+<section id="counterfactual-analyses-informed-by-lived-experience-experts" class="level2">
+<h2 class="anchored" data-anchor-id="counterfactual-analyses-informed-by-lived-experience-experts">Counterfactual Analyses informed by lived experience experts</h2>
+<section id="why-should-the-research-use-lived-experience-expertise" class="level3">
+<h3 class="anchored" data-anchor-id="why-should-the-research-use-lived-experience-expertise">Why should the research use Lived Experience expertise ?</h3>
+<p>Including LE experiences alongside this tool can be a useful reminder of the <strong>subjective nature of mental health</strong>. It is also a direct way <strong>to strengthen your research</strong>. Increasingly, co-production and PPI (patient and public involvement) is required for funding. This should be taken seriously, rather than treated as an add-on or in a tokenistic way.</p>
+<p>The inclusion of lived experience voices and feedback can also help with the <strong>practical application of the research</strong>: how does it relate to real experiences? This can help you to hone in on practically relevant research questions, and facilitate clinical validity of the interpretation of research findings. If applicable, this can also help with assessing the likely efficacy in real world application of the findings.</p>
+<p>The effects are not just one sided, as there can be <strong>positive impacts for lived experience collaborators</strong>. This can include empowerment, purpose, acquisition of new skills and knowledge, and having a role in changing and improving mental health research and interventions.</p>
+</section>
+<section id="how-should-the-research-use-lived-experience-expertise" class="level3">
+<h3 class="anchored" data-anchor-id="how-should-the-research-use-lived-experience-expertise">How should the research use Lived Experience expertise?</h3>
+<p>There is not one single definition of lived experience, and so it can come in many forms. It might include those who have previously or continue to experience mental illness difficulties, but it can also include family members of those who have experienced it.</p>
+<p>Those with lived experience may already be working in the academy, so it is also fruitful to engage with colleagues (across disciplines) who may bring in a unique lived experience perspective.</p>
+<p>Lived Experience experts can help to <strong>create or refine research questions.</strong> This can include the identification of relevant factors to explore. For example, in exploring active ingredients of mental health, a young person’s advisory group were asked to rank their importance, explain reasons, and add other possible influences. This exercise demonstrated that ‘social media’ was a more important factor than initially expected by the researchers. Young people also highlighted the importance of ‘entertainment’ in general as beneficial for well-being. They compared reading books to watching movies and noted that: “Umm, the thing between movies and books is books are generally better for you because it exposes you to better vocabulary and staring at a screen for too long isn’t the best thing to do. So, it is just that entertaining thing that can really benefit you.” Answers like these may help researchers refining their focus on the important ingredients for young people’s mental health.</p>
+<p>The inclusion of those with lived experience can help researchers to understand different perspectives and more fully understand key concepts. For example, further discussion in our advisory group emphasised that ‘social media’ is not homogenous but takes multiple forms, and therefore can have different impacts. The presence of advertising, for example, and how media is circulated via sites and apps may have significant negative influence on mental health. On the other hand, using it to keep in touch with friends, particularly when no other options are available due to distance or illness, may have a positive impact on mental health. As one young person pointed out relying on social media to keep in touch with friends “during COVID helped keep everybody sane”. However, they added that since then “We have not recovered from that.” Referring to social media use post covid they added: “It has worsened. People meeting up has gone down a lot or people are less willing to meet up because they’re, like, we could just text.” They pointed out that not engaging in activities outside of social media may have a negative impact on young people’s wellbeing. Further highlighting the complexities of ‘social media’ use and its impact. Similarly, when the potential impact of reading on young people’s mental health was discussed, one young person highlighted that: “some books can be more influential than others to different people, so it doesn’t matter how much you read. It matters what you read.”, again adding nuance. These examples suggest that exploring use of social media or reading would have been misleading without understanding why, how and when the young people thought these were important.</p>
+<p>Lived experience experts can also <strong>assist in the interpretation of data.</strong> As researchers (and individuals) we come to what we do with our own set of biases and expectations, so it is therefore a good idea to run our interpretations by third parties with lived experience in the area we are wishing to inform.</p>
+<p>Such consultation can also <strong>assist in the presentation of data, and co-production of research findings.</strong> In addition to publishing in scientific journals it is important to present the findings in ways that are easy to understand and utilise for those for whom they are most practically relevant; that is service users and generally those with lived experience. Such communications are best produced in collaboration with them.</p>
+<p>Lived experience experts should also be consulted on <strong>the dissemination and use of data and findings.</strong> Collaboration with lived experience experts increases credibility and practical reliability and applications of research findings.</p>
+<p>When they were asked whether it is <strong>important to engage youths with lived experience in research</strong>, our young experts told us that it is crucial to engage them in all stages of it. One young person stated: “Adults were kids once as well, but I think, feel that since social media is involved that it’s changed a lot. So, they still had the same problems, but now there are also different things and those things could be changed to make it better.” They suggested that this could be done via online advisory groups, dedicated apps that would gather young people’s input or surveys.</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    text: function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+</body></html>

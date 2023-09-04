@@ -46,5 +46,32 @@
   },
   "survey.qmd": {
     "survey.html": "0b9af41c"
+  },
+  "01_howto_digicat.qmd": {
+    "01_howto_digicat.html": "68531d45"
+  },
+  "02_introcf.qmd": {
+    "02_introcf.html": "6d6241d1"
+  },
+  "03_choosecf.qmd": {
+    "03_choosecf.html": "fefe236e"
+  },
+  "04_cfmethod.qmd": {
+    "04_cfmethod.html": "3a86da1d"
+  },
+  "05_missing.qmd": {
+    "05_missing.html": "4f7844f3"
+  },
+  "06_survey.qmd": {
+    "06_survey.html": "db8cfc2d"
+  },
+  "07_further.qmd": {
+    "07_further.html": "4e45bc0f"
+  },
+  "01_introcf.qmd": {
+    "01_introcf.html": "642210f8"
+  },
+  "02_howto_digicat.qmd": {
+    "02_howto_digicat.html": "37ae6033"
   }
 }

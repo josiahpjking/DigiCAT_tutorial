@@ -13,8 +13,8 @@ website:
     collapse-level: 1
     contents:
       - index.qmd
-      - 01_howto_digicat.qmd
-      - 02_introcf.qmd
+      - 01_introcf.qmd
+      - 02_howto_digicat.qmd
       - 03_choosecf.qmd
       - 04_cfmethod.qmd
       - 05_missing.qmd

@@ -2,6 +2,17 @@
 title: "Acknowledgements & Further reading"
 ---
 
+## DigiCAT features in development 
+
+The following features are currently in development or planned for incorporation soon: 
+
+- Machine learning propensity score estimation methods (generalised boosting models and random forest) 
+- Counterfactual analysis for continuous and nominal treatments 
+- Counterfactual analysis for binary outcomes 
+- Marginal effects workflow for ordinal treatment variables 
+- More options for multiple imputation 
+- More options for IPTW (including ATT estimation and weight stabilisation) 
+
 
 ## Acknowledgements  
 
@@ -9,39 +20,16 @@ We are grateful to the Wellcome Trust for funding the Discovery and Prototyping 
 
 ## Further Reading
 
-Accessible introductions to causal inference
+ - Austin, Peter C., Nathaniel Jembere, and Maria Chiu. 2016. “Propensity Score Matching and Complex Surveys.” Statistical Methods in Medical Research 27 (4): 1240–57. https://doi.org/10.1177/0962280216658920.  
 
-- Pearl’s Primer on causal inference
+- Austin, P. C., & Stuart, E. A. (2015). Moving towards best practice when using inverse probability of treatment weighting (IPTW) using the propensity score to estimate causal treatment effects in observational studies. Statistics in Medicine, 34(28), 3661–3679. 
 
-More on counterfactual analysis  
+- Caliendo, M., & Kopeinig, S. (2008). Some practical guidance for the implementation of propensity score matching. Journal of economic surveys, 22(1), 31-72. 
 
-- [recent book that included the chapter on NPB]
-- [matchIT /other sources on doing it in R]
-- Caliendo, M., & Kopeinig, S. (2008). Some practical guidance for the implementation of propensity score matching. Journal of economic surveys, 22(1), 31-72.  
+- de Vries, B. B. P., & Groenwold, R. H. (2017). A comparison of two approaches to implementing propensity score methods following multiple imputation. Epidemiology, Biostatistics, and Public Health, 14(4). 
 
+- Desai, R. J., & Franklin, J. M. (2019). Alternative approaches for confounding adjustment in observational studies using weighting based on the propensity score: A primer for practitioners. Bmj, 367. 
 
-Advanced topics in counterfactual analysis?
+- Lenis, David, Trang Quynh Nguyen, Nianbo Dong, and Elizabeth A. Stuart. 2019. “It’s All about Balance: Propensity Score Matching in the Context of Complex Survey Data.” Biostatistics 20 (1): 147–63. https://doi.org/10.1093/biostatistics/kxx063. 
 
-- [counterfactual analysis with SEM?]
-- [causal mediation?]
-- [heterogeneous treatment effects?]
-
-
-More on missing data  
-
-- Nguyen, C. D., J. B. Carlin, and K. J. Lee. 2017. “Model Checking in Multiple Imputation: An Overview and Case Study.” Emerging Themes in Epidemiology 14 (1): 8.
-
-More on counterfactual analysis and complex survey designs
- 
-- Austin, Peter C., Nathaniel Jembere, and Maria Chiu. 2016. “Propensity Score Matching and Complex Surveys.” Statistical Methods in Medical Research 27 (4): 1240–57. https://doi.org/10.1177/0962280216658920.  
-- Lenis, David, Trang Quynh Nguyen, Nianbo Dong, and Elizabeth A. Stuart. 2019. “It’s All about Balance: Propensity Score Matching in the Context of Complex Survey Data.” Biostatistics 20 (1): 147–63. https://doi.org/10.1093/biostatistics/kxx063.  
-
-
-More on machine learning ensemble methods
-
-- McCaffrey, D. F., Ridgeway, G., & Morral, A. R. (2004). Propensity Score Estimation With Boosted Regression for Evaluating Causal Effects in Observational Studies. Psychological Methods, 9(4), 403–425. 
-
-
-Examples of papers using counterfactual analysis
-
-- [one per major approach implemented in DigiCAT or our own papers that implement multiple approaches]
+- Lu, B., Greevy, R., Xu, X., & Beck, C. (2011). Optimal nonbipartite matching and its statistical applications. The American Statistician, 65(1), 21–30. 

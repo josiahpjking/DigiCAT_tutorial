@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DigiCAT Tutorials - 1. The DigiCAT Tool</title>
+<title>DigiCAT Tutorials - 2. Introduction to Counterfactual Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,40 +19,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -121,7 +87,7 @@ if(f.classList.contains('fa-hand-o-right')) {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_howto_digicat.html">1. The DigiCAT Tool</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_introcf.html">2. Introduction to Counterfactual Analysis</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -149,31 +115,31 @@ if(f.classList.contains('fa-hand-o-right')) {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">DigiCAT Tutorial Pages</span></a>
+ <span class="menu-text">DigiCAT Tutorials</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_howto_digicat.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">1. The DigiCAT Tool</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02_introcf.html" class="sidebar-item-text sidebar-link">
+  <a href="./01_introcf.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text">2. Introduction to Counterfactual Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./02_howto_digicat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Using DigiCAT</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./03_choosecf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Choosing a Counterfactual Analysis Approach</span></a>
+ <span class="menu-text">3. Choosing a Method</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_cfmethod.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Counterfactual Methods</span></a>
+ <span class="menu-text">4. DigiCAT Methods</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -204,13 +170,9 @@ if(f.classList.contains('fa-hand-o-right')) {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#why-develop-digicat" id="toc-why-develop-digicat" class="nav-link active" data-scroll-target="#why-develop-digicat">Why develop DigiCAT?</a></li>
-  <li><a href="#how-to-use-digicat" id="toc-how-to-use-digicat" class="nav-link" data-scroll-target="#how-to-use-digicat">How to use DigiCAT</a></li>
-  <li><a href="#involving-lived-experience-expertise-alongside-the-tool" id="toc-involving-lived-experience-expertise-alongside-the-tool" class="nav-link" data-scroll-target="#involving-lived-experience-expertise-alongside-the-tool">Involving Lived Experience Expertise alongside the Tool</a>
-  <ul class="collapse">
-  <li><a href="#why-should-the-research-use-lived-experience-expertise" id="toc-why-should-the-research-use-lived-experience-expertise" class="nav-link" data-scroll-target="#why-should-the-research-use-lived-experience-expertise">Why should the research use Lived Experience expertise ?</a></li>
-  <li><a href="#how-should-the-research-use-lived-experience-expertise" id="toc-how-should-the-research-use-lived-experience-expertise" class="nav-link" data-scroll-target="#how-should-the-research-use-lived-experience-expertise">How should the research use Lived Experience expertise?</a></li>
-  </ul></li>
+  <li><a href="#what-is-counterfactual-analysis" id="toc-what-is-counterfactual-analysis" class="nav-link active" data-scroll-target="#what-is-counterfactual-analysis">What is counterfactual analysis?</a></li>
+  <li><a href="#what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis" id="toc-what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis" class="nav-link" data-scroll-target="#what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis">What kind of research questions can be answered with counterfactual analysis?</a></li>
+  <li><a href="#why-not-just-adjust-for-covariates-in-regression" id="toc-why-not-just-adjust-for-covariates-in-regression" class="nav-link" data-scroll-target="#why-not-just-adjust-for-covariates-in-regression">Why not just adjust for covariates in regression?</a></li>
   </ul>
 </nav>
     </div>
@@ -219,7 +181,7 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">1. The DigiCAT Tool</h1>
+<h1 class="title">2. Introduction to Counterfactual Analysis</h1>
 </div>
 
 
@@ -234,60 +196,43 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 </header>
 
-<section id="why-develop-digicat" class="level2">
-<h2 class="anchored" data-anchor-id="why-develop-digicat">Why develop DigiCAT?</h2>
-<p>Counterfactual analysis provides a set of tools that can help us understand what the active ingredients are in mental health. While the gold standard for doing so would be something like a randomised controlled trial (RCT), RCTs are not always possible and when they are, they are expensive and challenging to do well. Their highly controlled nature also means that they may lack ecological validity so that results from RCTs might not apply very well in the real world.</p>
-<p>As such there is a lot of value in being able to get an idea of what might impact mental health from observational data (I.e., non-experimental data). In fact, there is a wealth of pre-existing mental health data ready to be used in this way. Some examples of such datasets can be found in, for example, this catalogue of mental health datasets: <a href="https://www.cataloguementalhealth.ac.uk/" target="_blank">https://www.cataloguementalhealth.ac.uk/</a></p>
-<p>However, we noticed that counterfactual analysis is not as widely used in mental health research as one might expect. There may be a number of reasons for this but we think a major one is that counterfactual analysis might not be very accessible for mental health researchers. It would not typically be part of training and it can be technically quite complex, which may limit researcher’s ability to use it. There’s also a lack of accessible tools for counterfactual analysis. Most tools require coding skills and while some web applications exist they don’t do everything. In particular, their functionality tends to be narrowly focused on a particular type of analysis and they tend not be able to deal with the ‘real world’ features of data like the presence of missingness or complex survey data or non-binary treatments. These are things we wanted to address with DigiCAT.</p>
-<p>Another reason we made DigiCAT is we noticed that it took rather a long time to code counterfactual analyses using existing packages and things got complicated when we had to consider things like missingness, clustering, large numbers of confounders etc. By pulling together all the code from common ‘journeys’ and creating an easy ‘point and click’ interface we also aim to speed up the implementation of counterfactual analysis even for expert users adept in the technique in existing softwares like R.</p>
+<section id="what-is-counterfactual-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="what-is-counterfactual-analysis">What is counterfactual analysis?</h2>
+<p>Counterfactual analysis is a set of techniques for trying to understand the impact of a treatment. It does so by comparing people who experienced that treatment to a hypothetical ‘counterfactual’ version of themselves who did not. Since in the real world, people either do or not experience a treatment, we cannot literally compare the same person under the scenario of experiencing versus not experiencing a treatment. Instead controls (who did not experience the treatment) who are very similar to the treated people in all important respects are used to stand in for the counterfactual. By ‘very similar in all important respects’ we mean that although they did not experience the treatment, they had a very similar propensity to or ‘similar chances of’ experiencing the treatment’ as a person who did experience the treatment. This propensity is estimated based on their levels of ‘confounding factors’ I.e., factors that impact both the likelihood of receiving the treatment and the outcome of interest. We can compare treated and control units on an outcome of interest (e.g., depression) and if those outcomes differ we can be more sure that it is due to the treatment, rather than any confounding factors. As such, counterfactual analysis can support causal inference in a way that models that don’t take into account confounding factors cannot. As we discuss in these tutorials, there are several methods by which propensities can be estimated and used to support causal inference in observational data.</p>
+<p>As an example of where counterfactual analysis can be useful, we might ask whether social media has a negative impact on adolescents’ mental health. We might find an association between social media use and depression in adolescents. However, we can’t be sure yet that this association is not due to confounding. For example, maybe adolescents with poorer mental health tend to turn to social media more (and are also more likely to continue to have poorer mental health ,given the stability of mental health over time). Or maybe there are other confounding factors, like attention deficit hyperactivity disorder (ADHD) that might lead people to use more social media and separately increase their risk of depression. If the set of potential confounding factors in this association can be identified and measured they could be used in a counterfactual analysis to see if there is still an association between social media use and depression after accounting for confounding. People with similar propensities to use social media a lot but who differ in their actual use could be compared. If those who use social media more show higher depression levels, we can be more sure that this is actually due to the social media use, rather than other confounding factors. We will use the example of social media use and mental health as an example throughout these tutorials as social media use was identified by our young person advisory group as a factor that they thought it particularly important to explore in research on young people’s mental health.</p>
 </section>
-<section id="how-to-use-digicat" class="level2">
-<h2 class="anchored" data-anchor-id="how-to-use-digicat">How to use DigiCAT</h2>
-<p>There are two ways to use DigiCAT. The first is to download it and use it on your local computer. This is recommended if you need to avoid uploading your data to a server or if you have a very large dataset or very computationally intensive analyses. The second way to use it is via the web application. The two versions are mostly very similar but the web application has a few more limits on it.</p>
-<p><strong>R Package</strong></p>
-<p>To use DigiCAT on your local computer you should have a recent version of R installed. Within R you can then enter the following lines to install and then run DigiCAT. Once it is installed you only need to run the third line to launch it each time.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"remotes"</span>) </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>remotes<span class="sc">::</span><span class="fu">install_github</span>(<span class="st">"josiahpjking/DigiCAT@develop"</span>)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>DigiCAT<span class="sc">::</span><span class="fu">run_DigiCAT</span>(<span class="at">enableLocal =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><strong>Web Version</strong></p>
-<p>The web version of DigiCAT is available at <a href="https://digicatapp.shinyapps.io/DigiCAT" target="_blank">https://digicatapp.shinyapps.io/DigiCAT</a></p>
+<section id="what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis" class="level2">
+<h2 class="anchored" data-anchor-id="what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis">What kind of research questions can be answered with counterfactual analysis?</h2>
+<p>Counterfactual analysis can be used to address research questions concerned with the causal impact of some candidate treatment or exposure on some outcome variable of interest. Usually this is in observational data where it is not possible to control whether people experience a treatment or not. It is particularly valuable when it is suspected that people do not randomly experience a treatment or not and this might also be related to the outcome of interest (e.g., we suspect that certain adolescents who use social media more might differ from those who use it less in ways that also increase their risk of depression. Counterfactual analysis needs three main things:</p>
+<ol type="1">
+<li>A treatment variable (e.g., social media use)<br>
+</li>
+<li>An outcome variable (e.g., depression)<br>
+</li>
+<li>Confounders or ’matching variables (e.g., ADHD, prior depression, sex/gender, socioeconomic status, physical health etc.)</li>
+</ol>
+<p>Other than the social media use example above, examples of research questions that could be asked using counterfactual analysis include:</p>
 <ul>
-<li>TODO Tree diagram of DigiCAT options</li>
+<li>What is the impact of reading for pleasure on mental health?</li>
+<li>Does school exclusion lead to poorer labour market outcomes?</li>
+<li>Do more positive relationships with teachers lead to fewer behavioural problems in adolescence?</li>
+</ul>
+<p>In fact, as DigiCAT was originally developed for mental health researchers we asked young people from our lived experience advisory groups what mental health research questions they think would be most interesting to investigate with counterfactual analysis. Here are some examples of the questions they felt should be a priority for mental health researchers:</p>
+<ul>
+<li>What is the impact of social media use on mental health?</li>
+<li>What is the impact of poorer sleep on mental health?</li>
+<li>What is the impact of poor peer relationships on mental health?</li>
+<li>What is the impact of spending time in nature on mental health?</li>
+<li>What is the impact of physical activity on mental health?</li>
 </ul>
 </section>
-<section id="involving-lived-experience-expertise-alongside-the-tool" class="level2">
-<h2 class="anchored" data-anchor-id="involving-lived-experience-expertise-alongside-the-tool">Involving Lived Experience Expertise alongside the Tool</h2>
-<section id="why-should-the-research-use-lived-experience-expertise" class="level3">
-<h3 class="anchored" data-anchor-id="why-should-the-research-use-lived-experience-expertise">Why should the research use Lived Experience expertise ?</h3>
-<ul>
-<li>Reminder of the subjective nature of mental health<br>
-</li>
-<li>Bring the Qualitative into the Quantitative analysis<br>
-</li>
-<li>Strengthen your research. Increasingly, co-production and PPI (patient and public involvement) is required for funding. This should be taken seriously, rather than treated as an add-on or in a tokenistic way.<br>
-</li>
-<li>Practical application – How does it relate to real experiences? Hone in on practically relevant research questions. Facilitate clinical validity of the interpretation of research findings<br>
-</li>
-<li>Assess likely efficacy in real world application of findings (if applicable)<br>
-</li>
-<li>Positive impact for lived experience collaborators. Empowerment, purpose, acquisition of new skills and knowledge, and having a role in changing and improving mental health research and interventions.</li>
-</ul>
-</section>
-<section id="how-should-the-research-use-lived-experience-expertise" class="level3">
-<h3 class="anchored" data-anchor-id="how-should-the-research-use-lived-experience-expertise">How should the research use Lived Experience expertise?</h3>
-<p>There is not one single definition of lived experience, and so it can come in many forms. It might include those who have previously or continue to experience mental illness difficulties, but it can also include family members of those who have experienced it.</p>
-<p>Those with lived experience may already be working in the academy, so it is also fruitful to engage with colleagues (across disciplines) who may bring in a unique lived experience perspective.</p>
-<p>For example, in exploring active ingredients of mental health, a young person’s advisory group were asked to rank their importance, explain reasons, and add other things. This exercise demonstrated that having access to ‘social media’ was a more important factor than initially expected by the researchers.</p>
-<p>Upon further exploration in the advisory group, it was revealed that ‘social media’ was important in order to keep in touch with friends. As one young person pointed out: “It’s very important to have a lot of friends and to really stick together because they are one of the only people that are there in all of the situations”. This suggests that exploring use of social media would have been misleading without understanding why the young people thought this was important.</p>
-<p>Similarly, ‘recovery’ can mean different things to different people, and understanding alternative meanings and framings can have a substantial positive impact on the research.</p>
-<p>As researchers (and individuals) we come to what we do with our set of biases and expectations, it is therefore a good idea to run our interpretations by third parties with lived experience in the area we are wishing to inform.</p>
-<p>In addition to publishing in scientific journals it is important to present the findings in ways that are easy to understand and utilise for those for whom they are most practically relevant; that is service users and generally those with lived experience. Such communications are best produced in collaboration with them.</p>
-<p>Collaboration with lived experience experts increases credibility and practical reliability and applications of research findings.</p>
+<section id="why-not-just-adjust-for-covariates-in-regression" class="level2">
+<h2 class="anchored" data-anchor-id="why-not-just-adjust-for-covariates-in-regression">Why not just adjust for covariates in regression?</h2>
+<p>Perhaps the most widely used approach to attempting to deal with confounding is to adjust for potential confounding within a regression or ANOVA-type model. This approach should be described as ‘conditional adjustment’. However, counterfactual analysis provides a more principled method that places causal inference at the fore. Importantly, it includes steps to check and ensure good covariate balance has been achieved. This is not guaranteed and may fail in traditional covariate adjustment approaches, leading to biases when trying to understand the causal effect of a treatment without any warning signs for the user. Further, counterfactual analysis provides a way of more clearly defining the target population about which inferences are being made. It can also readily incorporate a very large number of covariates. None of this comes at the cost of Interpretability when using methods like propensity matching or weighting. In DigiCAT in particular, both methods use a linear regression for the outcome model so the interpretation of the treatment effect is no more complicated than in a traditional regression model. ## What counterfactual analysis approaches are offered in this tool?</p>
+<p>DigiCAT currently offers several broad approaches to counterfactual analysis: propensity score matching for binary (traditional propensity score analysis) and ordinal treatment variables (non-bipartite optimal matching) and propensity score weighting for binary variables (inverse propensity of treatment weighting; IPTW). Propensity score matching for binary treatments is based on matching treated and control units with similar propensity scores to achieve balance between treated and control groups. Propensity weighting for binary treatments also uses a propensity score but transforms it into a weight that is used in a weighted regression. The weighted regression up-weights some cases and down-weights others to achieve balance between the treated and control groups. Non-bipartite propensity scoring estimates a propensity score based on treating the treatment variable as ordinal and then matches cases that have similar propensity scores but different treatment levels. We also have several features that are planned for incorporation in the future.</p>
+<p>We are continuing to develop DigiCAT to make more approaches available. These are listed under <a href="https://uoe-digicat.github.io/07_further.html">features in development</a>. Feel free to get in touch <a href="mailto:uoe_digicat-group@uoe.onmicrosoft.com">uoe_digicat-group@uoe.onmicrosoft.com</a> if you have suggestions for approaches you would like to see within the tool.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->

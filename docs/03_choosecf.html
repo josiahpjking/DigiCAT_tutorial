@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DigiCAT Tutorials - 3. Choosing a Counterfactual Analysis Approach</title>
+<title>DigiCAT Tutorials - 3. Choosing a Method</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -75,6 +75,8 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 <script src="https://kit.fontawesome.com/120b08a6f5.js" crossorigin="anonymous"></script>
 
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
 </head>
 
@@ -87,7 +89,7 @@ if(f.classList.contains('fa-hand-o-right')) {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_choosecf.html">3. Choosing a Counterfactual Analysis Approach</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./03_choosecf.html">3. Choosing a Method</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -115,31 +117,31 @@ if(f.classList.contains('fa-hand-o-right')) {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">DigiCAT Tutorial Pages</span></a>
+ <span class="menu-text">DigiCAT Tutorials</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_howto_digicat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. The DigiCAT Tool</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02_introcf.html" class="sidebar-item-text sidebar-link">
+  <a href="./01_introcf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2. Introduction to Counterfactual Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./02_howto_digicat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Using DigiCAT</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./03_choosecf.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">3. Choosing a Counterfactual Analysis Approach</span></a>
+ <span class="menu-text">3. Choosing a Method</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_cfmethod.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Counterfactual Methods</span></a>
+ <span class="menu-text">4. DigiCAT Methods</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -172,17 +174,8 @@ if(f.classList.contains('fa-hand-o-right')) {
   <ul>
   <li><a href="#ordinal-vs-binary-treatments" id="toc-ordinal-vs-binary-treatments" class="nav-link active" data-scroll-target="#ordinal-vs-binary-treatments">Ordinal vs Binary Treatments</a></li>
   <li><a href="#matching-vs-weighting" id="toc-matching-vs-weighting" class="nav-link" data-scroll-target="#matching-vs-weighting">Matching vs Weighting</a></li>
-  <li><a href="#machine-learning-versus-regression-propensity-estimation" id="toc-machine-learning-versus-regression-propensity-estimation" class="nav-link" data-scroll-target="#machine-learning-versus-regression-propensity-estimation">Machine learning versus regression propensity estimation</a></li>
   <li><a href="#complete-case-versus-multiple-imputation-versus-weighting-for-missing-data" id="toc-complete-case-versus-multiple-imputation-versus-weighting-for-missing-data" class="nav-link" data-scroll-target="#complete-case-versus-multiple-imputation-versus-weighting-for-missing-data">Complete case versus multiple imputation versus weighting for missing data</a></li>
   <li><a href="#the-benefits-of-sensitivity-analyses" id="toc-the-benefits-of-sensitivity-analyses" class="nav-link" data-scroll-target="#the-benefits-of-sensitivity-analyses">The benefits of sensitivity analyses</a></li>
-  <li><a href="#propensity-score-matching" id="toc-propensity-score-matching" class="nav-link" data-scroll-target="#propensity-score-matching">Propensity score matching</a>
-  <ul class="collapse">
-  <li><a href="#propensity-score-specification-and-estimation" id="toc-propensity-score-specification-and-estimation" class="nav-link" data-scroll-target="#propensity-score-specification-and-estimation">Propensity score specification and estimation</a></li>
-  <li><a href="#nearest-neighbour-11-matching" id="toc-nearest-neighbour-11-matching" class="nav-link" data-scroll-target="#nearest-neighbour-11-matching">Nearest neighbour 1:1 matching</a></li>
-  <li><a href="#nearest-neighbour-k1-matching" id="toc-nearest-neighbour-k1-matching" class="nav-link" data-scroll-target="#nearest-neighbour-k1-matching">Nearest neighbour K:1 matching</a></li>
-  </ul></li>
-  <li><a href="#iptw" id="toc-iptw" class="nav-link" data-scroll-target="#iptw">IPTW</a></li>
-  <li><a href="#nbp" id="toc-nbp" class="nav-link" data-scroll-target="#nbp">NBP</a></li>
   </ul>
 </nav>
     </div>
@@ -191,7 +184,7 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">3. Choosing a Counterfactual Analysis Approach</h1>
+<h1 class="title">3. Choosing a Method</h1>
 </div>
 
 
@@ -212,38 +205,33 @@ if(f.classList.contains('fa-hand-o-right')) {
 </section>
 <section id="matching-vs-weighting" class="level2">
 <h2 class="anchored" data-anchor-id="matching-vs-weighting">Matching vs Weighting</h2>
-<p>Matching and weighting approaches are both available for binary variables. Matching can be used to estimate the ATT and weighting can be used to estimate the ATT or ATE. As such, your research question (and whether it concerns the effect of a treatment in the treated or whole population) should be your primary guide your choice of matching versus weighting. There are; however, also some other differences between matching and weighting that may be considered. For example, weighting uses the whole sample, whereas matching (depending on which method is used) might result in some unmatched cases being unused. Weighting can, therefore, have advantages when the treatment is rare or the overall sample size is small. More details on these methods are provided below.</p>
-<p>Note that though DigiCAT implements weighting and matching, reflecting the most common ways in which propensity scores are used, these are not the only way they can be used in counterfactual analysis. For example, stratifcation on the propensity score is also sometimes used and sometimes (though we do not necessarily recommend it), the propensity score is used as a covariate in a regression as form of counterfactual analysis. DigiCAT will this also offer the option to save out estimated propensity scores so that they can be used in other ways. This also allows the scores to be used in more complex analyses that are not offered in DigiCAT, for example, using them in a structural equation model. We are grateful to the member of our user group who suggested adding this feature.</p>
-</section>
-<section id="machine-learning-versus-regression-propensity-estimation" class="level2">
-<h2 class="anchored" data-anchor-id="machine-learning-versus-regression-propensity-estimation">Machine learning versus regression propensity estimation</h2>
-<p>TODO</p>
+<p>Matching and weighting approaches are both available for binary variables. Matching can be used to estimate the ATT and weighting can be used in DigiCAT to estimate the ATE. As such, your research question (and whether it concerns the effect of a treatment in the treated or whole population) should be your primary guide your choice of matching versus weighting. There are; however, also some other differences between matching and weighting that may be considered. For example, weighting uses the whole sample, whereas matching (depending on which method is used) might result in some unmatched cases being unused. Weighting can, therefore, have advantages when the treatment is rare or the overall sample size is small. More details on these methods are provided below.</p>
+<p>Note that though DigiCAT implements weighting and matching, reflecting the most common ways I which propensity scores are used, these are not the only way they can be used in counterfactual analysis. For example, stratification on the propensity score is also sometimes used and sometimes (though we do not necessarily recommend it), the propensity score is used as a covariate in a regression as form of counterfactual analysis. DigiCAT will in the future also offer the option to save out estimated propensity scores so that they can be used in other ways. This also allows the scores to be used in more complex analyses that are not offered in DigiCAT, for example, using them in a structural equation model. We are grateful to the member of our user group who suggested adding this feature.</p>
 </section>
 <section id="complete-case-versus-multiple-imputation-versus-weighting-for-missing-data" class="level2">
 <h2 class="anchored" data-anchor-id="complete-case-versus-multiple-imputation-versus-weighting-for-missing-data">Complete case versus multiple imputation versus weighting for missing data</h2>
-<p>There are several options for dealing with missing data available in DigiCAT: complete case analysis, multiple imputation, and weighting. Complete case analysis should be selected when you have no missing data. It is also justifiable to use it if you are confident that there is no relation between missingness and the variables you have in your model or between the missingness and the missing values of the outcome variable. Weighting is a good option for dealing with case-level missing data, I.e., some people are completely missing at a time-point. This could happen if you have longitudinal data with your matching, treatment, and outcome variables measured at sequential time-points. If you have an attrition weight for the last time-point you could use it with missingness weighting to deal with any non-random drop-out between your baseline and outcome point. Finally, multiple imputation can be used to deal with case and variable-level missingness. However, it can take a long time to run so users with large datasets and large numbers of matching variables and/or additional covariates should be aware of this. More details on the missingness methods are provided below.</p>
+<p>There are several options for dealing with missing data available in DigiCAT: complete case analysis, multiple imputation, and weighting. Complete case analysis should be selected when you have no missing data. It is also justifiable to use it if you are confident that there is no relation between missingness and the variables you have in your model or between the missingness and the missing values of the outcome variable. Weighting is a good option for dealing with case-level missing data, i.e., some people are completely missing at a time-point. This could happen if you have longitudinal data with your matching, treatment, and outcome variables measured at sequential time-points. If you have an attrition weight for the last time-point you could use it with missingness weighting to deal with any non-random drop-out between your baseline and outcome point. Finally, multiple imputation can be used to deal with case and variable-level missingness. However, it can take a long time to run so users with large datasets and large numbers of matching variables and/or additional covariates should be aware of this. More details on the missingness methods are provided below.</p>
 </section>
 <section id="the-benefits-of-sensitivity-analyses" class="level2">
 <h2 class="anchored" data-anchor-id="the-benefits-of-sensitivity-analyses">The benefits of sensitivity analyses</h2>
 <p>There are a lot of subjective decision points in counterfactual analysis, such as which matching variables to include, which additional covariates to include (if any), which missingness approach to use for missing data and whether to match or weight by a propensity score. While there have been a lot of advancements in recent years in our understanding of what best practice for implementing counterfactual analysis looks like, it is not always the case that there is one ‘best approach’. Sometimes it depends. Sometimes it’s still debated or there isn’t a lot of evidence to guide a decision. As such, we recommend where relevant using multiple different approaches and checking whether you get similar results with different approaches. If you do, this helps increase confidence in your findings. If your results differ a lot across approaches then the nature of the differences might be illuminating. For example, if you find that PSM is non-significant but IPTW is significant this may be because the latter uses more of the data (e.g., if the treatment and control groups are very different). Provided IPTW successfully balances the groups, it could suggest that IPTW is more suitable for these data.</p>
-</section>
-<section id="propensity-score-matching" class="level2">
-<h2 class="anchored" data-anchor-id="propensity-score-matching">Propensity score matching</h2>
-<section id="propensity-score-specification-and-estimation" class="level3">
-<h3 class="anchored" data-anchor-id="propensity-score-specification-and-estimation">Propensity score specification and estimation</h3>
-</section>
-<section id="nearest-neighbour-11-matching" class="level3">
-<h3 class="anchored" data-anchor-id="nearest-neighbour-11-matching">Nearest neighbour 1:1 matching</h3>
-</section>
-<section id="nearest-neighbour-k1-matching" class="level3">
-<h3 class="anchored" data-anchor-id="nearest-neighbour-k1-matching">Nearest neighbour K:1 matching</h3>
-</section>
-</section>
-<section id="iptw" class="level2">
-<h2 class="anchored" data-anchor-id="iptw">IPTW</h2>
-</section>
-<section id="nbp" class="level2">
-<h2 class="anchored" data-anchor-id="nbp">NBP</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Technical background to counterfactual analysis
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>The potential outcomes framework Counterfactual analysis is based on what is known as the ‘potential outcomes’ framework which was formalised by Rubin. It is based on the notion that for each unit exposed to a treatment W <span class="math inline">\((W_i = 1)\)</span> there is a potential outcome <span class="math inline">\((W_i = 0)\)</span> where they weren’t exposed to that treatment. It is assumed that each unit assigned to the treated and control groups have ‘potential outcomes’ in both states but only one of these states is observed. Within the potential outcomes framework, a causal effect of a binary treatment is defined as the difference between these potential outcomes. Counterfactual analysis methods have to solve the problem that only one of these potential outcomes is observed for each individual.</p>
+<p>The methods in DigiCAT are based on the potential outcomes framework and therefore carry certain assumptions inherited from the framework. A major one is the stable unit treatment assumption (SUVTA) which means that the potential outcomes for any unit does not depend on the treatment assignment of any other units. This means that there is no interference between units. Another important one is that there are no unmeasured/unmodelled confounders that are associated with the potential outcomes and with treatment assignment. Other assumptions associated with specific counterfactual analysis workflows are discussed with each method.</p>
+</div>
+</div>
+</div>
 
 
 </section>

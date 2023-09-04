@@ -115,31 +115,31 @@ if(f.classList.contains('fa-hand-o-right')) {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">DigiCAT Tutorial Pages</span></a>
+ <span class="menu-text">DigiCAT Tutorials</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./01_howto_digicat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. The DigiCAT Tool</span></a>
-  </div>
-</li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./02_introcf.html" class="sidebar-item-text sidebar-link">
+  <a href="./01_introcf.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">2. Introduction to Counterfactual Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./02_howto_digicat.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">1. Using DigiCAT</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./03_choosecf.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">3. Choosing a Counterfactual Analysis Approach</span></a>
+ <span class="menu-text">3. Choosing a Method</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./04_cfmethod.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">4. Counterfactual Methods</span></a>
+ <span class="menu-text">4. DigiCAT Methods</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -170,7 +170,8 @@ if(f.classList.contains('fa-hand-o-right')) {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link active" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
+  <li><a href="#digicat-features-in-development" id="toc-digicat-features-in-development" class="nav-link active" data-scroll-target="#digicat-features-in-development">DigiCAT features in development</a></li>
+  <li><a href="#acknowledgements" id="toc-acknowledgements" class="nav-link" data-scroll-target="#acknowledgements">Acknowledgements</a></li>
   <li><a href="#further-reading" id="toc-further-reading" class="nav-link" data-scroll-target="#further-reading">Further Reading</a></li>
   </ul>
 </nav>
@@ -195,45 +196,32 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 </header>
 
+<section id="digicat-features-in-development" class="level2">
+<h2 class="anchored" data-anchor-id="digicat-features-in-development">DigiCAT features in development</h2>
+<p>The following features are currently in development or planned for incorporation soon:</p>
+<ul>
+<li>Machine learning propensity score estimation methods (generalised boosting models and random forest)</li>
+<li>Counterfactual analysis for continuous and nominal treatments</li>
+<li>Counterfactual analysis for binary outcomes</li>
+<li>Marginal effects workflow for ordinal treatment variables</li>
+<li>More options for multiple imputation</li>
+<li>More options for IPTW (including ATT estimation and weight stabilisation)</li>
+</ul>
+</section>
 <section id="acknowledgements" class="level2">
 <h2 class="anchored" data-anchor-id="acknowledgements">Acknowledgements</h2>
 <p>We are grateful to the Wellcome Trust for funding the Discovery and Prototyping phases of the development of DigiCAT. Our thanks also go to the many who contributed to DigiCAT in various ways. We are grateful to the young person advisory groups (YPAGs) who provided invaluable insights and help guide the direction of DigiCAT, to the users who responded to our user survey and to the group members who provided feedback on iterations of the tool.</p>
 </section>
 <section id="further-reading" class="level2">
 <h2 class="anchored" data-anchor-id="further-reading">Further Reading</h2>
-<p>Accessible introductions to causal inference</p>
 <ul>
-<li>Pearl’s Primer on causal inference</li>
-</ul>
-<p>More on counterfactual analysis</p>
-<ul>
-<li>[recent book that included the chapter on NPB]</li>
-<li>[matchIT /other sources on doing it in R]</li>
-<li>Caliendo, M., &amp; Kopeinig, S. (2008). Some practical guidance for the implementation of propensity score matching. Journal of economic surveys, 22(1), 31-72.</li>
-</ul>
-<p>Advanced topics in counterfactual analysis?</p>
-<ul>
-<li>[counterfactual analysis with SEM?]</li>
-<li>[causal mediation?]</li>
-<li>[heterogeneous treatment effects?]</li>
-</ul>
-<p>More on missing data</p>
-<ul>
-<li>Nguyen, C. D., J. B. Carlin, and K. J. Lee. 2017. “Model Checking in Multiple Imputation: An Overview and Case Study.” Emerging Themes in Epidemiology 14 (1): 8.</li>
-</ul>
-<p>More on counterfactual analysis and complex survey designs</p>
-<ul>
-<li>Austin, Peter C., Nathaniel Jembere, and Maria Chiu. 2016. “Propensity Score Matching and Complex Surveys.” Statistical Methods in Medical Research 27 (4): 1240–57. https://doi.org/10.1177/0962280216658920.<br>
-</li>
-<li>Lenis, David, Trang Quynh Nguyen, Nianbo Dong, and Elizabeth A. Stuart. 2019. “It’s All about Balance: Propensity Score Matching in the Context of Complex Survey Data.” Biostatistics 20 (1): 147–63. https://doi.org/10.1093/biostatistics/kxx063.</li>
-</ul>
-<p>More on machine learning ensemble methods</p>
-<ul>
-<li>McCaffrey, D. F., Ridgeway, G., &amp; Morral, A. R. (2004). Propensity Score Estimation With Boosted Regression for Evaluating Causal Effects in Observational Studies. Psychological Methods, 9(4), 403–425.</li>
-</ul>
-<p>Examples of papers using counterfactual analysis</p>
-<ul>
-<li>[one per major approach implemented in DigiCAT or our own papers that implement multiple approaches]</li>
+<li><p>Austin, Peter C., Nathaniel Jembere, and Maria Chiu. 2016. “Propensity Score Matching and Complex Surveys.” Statistical Methods in Medical Research 27 (4): 1240–57. https://doi.org/10.1177/0962280216658920.</p></li>
+<li><p>Austin, P. C., &amp; Stuart, E. A. (2015). Moving towards best practice when using inverse probability of treatment weighting (IPTW) using the propensity score to estimate causal treatment effects in observational studies. Statistics in Medicine, 34(28), 3661–3679.</p></li>
+<li><p>Caliendo, M., &amp; Kopeinig, S. (2008). Some practical guidance for the implementation of propensity score matching. Journal of economic surveys, 22(1), 31-72.</p></li>
+<li><p>de Vries, B. B. P., &amp; Groenwold, R. H. (2017). A comparison of two approaches to implementing propensity score methods following multiple imputation. Epidemiology, Biostatistics, and Public Health, 14(4).</p></li>
+<li><p>Desai, R. J., &amp; Franklin, J. M. (2019). Alternative approaches for confounding adjustment in observational studies using weighting based on the propensity score: A primer for practitioners. Bmj, 367.</p></li>
+<li><p>Lenis, David, Trang Quynh Nguyen, Nianbo Dong, and Elizabeth A. Stuart. 2019. “It’s All about Balance: Propensity Score Matching in the Context of Complex Survey Data.” Biostatistics 20 (1): 147–63. https://doi.org/10.1093/biostatistics/kxx063.</p></li>
+<li><p>Lu, B., Greevy, R., Xu, X., &amp; Beck, C. (2011). Optimal nonbipartite matching and its statistical applications. The American Statistician, 65(1), 21–30.</p></li>
 </ul>
 
 
