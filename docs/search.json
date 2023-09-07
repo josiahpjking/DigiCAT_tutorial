@@ -245,18 +245,11 @@
     "text": "learning obj\n\n\nimportant\n\n\nsticky\n\n\n\n\n\nr tips\n\n\nstatbox\n\n\ninterpretation interpretation interpretation\n\n\nQuestion\n\n\nquestion\nwhat is your name?\nwhat is your favourite colour?\n\n\n\n\n Solution \n\n\nsolution\nhello\n\n2+2\n\n[1] 4\n\n\n\n\n\n\n Optional hello my optional friend\n\n\nit’s nice to see you again\n\n\n\n\n\nthis is not a panel\n\n\nthis is a panel\n\n\nthis is a panel"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "DigiCAT Tutorials",
-    "section": "",
-    "text": "Welcome to the tutorial pages for DigiCAT! The tutorials provide information on what counterfactual analysis is, why it can be useful, and how to do it using DigiCAT. These pages are designed to be accessible to those with minimal experience of counterfactual analysis. As such, where we provide technical details, we have also endeavoured to provide a translation; a ‘what does this mean?’. If after reading through the tutorials you crave more information on counterfactual analysis you can check out the further reading."
-  },
-  {
     "objectID": "index.html#overview-of-tutorials",
     "href": "index.html#overview-of-tutorials",
     "title": "DigiCAT Tutorials",
-    "section": "",
-    "text": "Welcome to the tutorial pages for DigiCAT! The tutorials provide information on what counterfactual analysis is, why it can be useful, and how to do it using DigiCAT. These pages are designed to be accessible to those with minimal experience of counterfactual analysis. As such, where we provide technical details, we have also endeavoured to provide a translation; a ‘what does this mean?’. If after reading through the tutorials you crave more information on counterfactual analysis you can check out the further reading."
+    "section": "Overview of tutorials",
+    "text": "Overview of tutorials\nWelcome to the tutorial pages for DigiCAT! The tutorials provide information on what counterfactual analysis is, why it can be useful, and how to do it using DigiCAT. These pages are designed to be accessible to those with minimal experience of counterfactual analysis. As such, where we provide technical details, we have also endeavoured to provide a translation; a ‘what does this mean?’. If after reading through the tutorials you crave more information on counterfactual analysis you can check out the further reading."
   },
   {
     "objectID": "index.html#how-to-engage-with-tutorials",
