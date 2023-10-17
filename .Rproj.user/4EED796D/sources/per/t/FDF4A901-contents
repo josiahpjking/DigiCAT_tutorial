@@ -1,0 +1,144 @@
+---
+title: "4. DigiCAT Methods"
+---
+
+## Propensity Score Matching (PSM)
+
+The main steps in propensity score matching (PSM) are to: 1) decide on which matching variables to include 2) fit a propensity model including these variables to estimate propensity scores (reflecting their propensity to experience a treatment variable) each individual in the sample 3) match treated individuals and control individuals with similar propensity scores 4) fit an outcome model using the matched data. 
+
+### Selecting matching variables  
+
+In order to successfully address confounding with PSM it is necessary to identify and include measures of all relevant confounders in the propensity model. It is also necessary to specify the correct functional form of relations between the matching variables and the treatment variable; an issue discussed in more detail later. Confounders are variables that are common causes of both treatment assignment and the outcome. For example, when aiming to estimate the impact of physical activity on mental health, a person's gender might be a confounding factor as it might impact both physical activity levels and mental health outcomes. These confounders should be chosen based on theory and past research.  There is no real way to test that all relevant confounders have been identified and measured, therefore, there is a strong reliance on subject matter knowledge when choosing matching variables. Drawing causal diagrams can help to lay out the hypothesised causal relations between treatment, confounders and outcome. Arguments have also been made for including variables in the propensity model that are related only to the outcome (not treatment) variable since this can increase power to detect the treatment effect. On the other hand, it has been shown that including variables related only to the treatment variable (not the outcome variable) can reduce power. It is critical to not include variables that might have been impacted by the outcome variable as this can induce seriously distort the treatment effects. For this reason, researchers often limit the selection of matching variables to those that occurred (or were measured) prior to the treatment. In practice, it may be difficult to identify and to have measures available of all possible relevant confounders, therefore, researchers tend to select a large number of potential confounders.   
+
+### Propensity score specification and estimation 
+
+Propensity score models can and have been estimated using a wide variety of approaches. This could include (regularised) regression approaches, machine learning tree-based methods, such as CART, and ensemble tree-based methods such as random forest or gradient boosted machines. Other machine learning techniques such as support vector machines and neural networks are also possible choices. There are pros and cons to different methods and DigiCAT provides an implementation of a selection of complementary methods. Logistic regression is provided for its high interpretability and quick computation. Two tree-based machine learning methods: random forest and gradient boosted machines will also be implemented soon because they have good flexibility for approximating complex relations between matching variables and treatments.  
+
+Logistic regression has historically been by far the most popular method of estimating propensity scores. It and probit regression are method that can estimate the associations between a set of predictors and a binary (0 vs 1) outcome variable. This makes them suitable models for estimating propensity scores for binary treatments.  
+
+In a simple logistic regression with only one predictor, the probability that Y=1, which we could denote P(y_i), is predicted from a matching variables, which we could denote X_1, using the formula: 
+
+$$
+P(y_i) = \frac{1}{1+e^{-(b_0 + b_1X_1)}}
+$$  
+
+$e$ refers to the exponential function and $b_0+b_1 X_{1}$ forms a linear combination with a constant $b_0$ and the coefficient $b_1$ which captures the effect of the predictor $X_1$. This then generalises to a multiple logistic regression that can include many matching variables and their interactions.: 
+
+$$
+P(y_i) = \frac{1}{1+e^{-(b_0 + b_1X_1 + b_2X_2 + ... + b_kX_k)}}
+$$  
+
+
+Each $b$ coefficient captures the effect of one predictor which in the context of propensity score analysis represents the effect of each matching variable on the treatment, The model can be estimated using maximum likelihood estimation. The individual b coefficients are typically not of great interest in a propensity analysis context. Instead of key interest is the propensity score. For each individual, propensity scores are the scores predicted by the model based on the estimated b coefficients.  That is the predicted $P(y_i)$ scores represented the predicted probability of having received the treatment. It is these scores that are used in subsequent stages of propensity score analysis for matching or to derive weights in IPTW.  
+
+### Matching on the propensity score
+
+
+::: {.callout-note collapse="true"}
+#### Nearest neighbour 1:1 matching 
+
+Nearest neighbour matching refers to a type of matching method that uses what is called 'greedy matching'.  In this method, a treated case is selected and the most similar control unit is matched with it. If there are multiple equally similar control units then one of them is selected at random. Then, another treated case is selected and the most similar control unit to it and so on and so forth until no more matches are possible. The simplest form of nearest neighbour matching uses matching without replacement whereby once a control unit has been matched to a treated unit, it is no longer available for matching to further treated units. 
+
+Nearest neighbour matching is also used with 'calipers' applied. This restricts matches only to treated and control units that are within a specified level of similarity to each other.  This restriction is referred to as the 'caliper distance' and it helps to control the amount of 'imbalance' allowed between the treated and control units after matching.  When calipers are applied, not all treated units will necessarily find a match; for some, there may not be any control units available that are sufficiently similar. In general, studies have found that using a caliper with nearest neighbour matching is beneficial for getting less biases treatment effect estimates (e.g., Austin, 2014). However, others have cautioned against using too strict calipers as these can have detrimental effects. Specifically, it can change the interpretation of the treatment effect from the effect of the treatment on the treated to the 'effect of the treatment on the treated who have similar-enough controls'. The treated who have similar-enough controls might not be very representative of the underlying relevant population. In DigiCAT we currently do not impose caliper restrictions
+
+:::
+
+
+::: {.callout-note collapse="true"}
+#### Nearest neighbour K:1 matching 
+
+Nearest neighbour k:1 matching (also known as 'many to one' matching) is when each treated case is matched to multiple control cases.  The 'k' refers to the number of controls that get matched to each treated unit. K:1 matching is done to make more use of the available sample as compared to 1:1 matching. In 1:1 matching  if a treatment is rare (e.g., 50 out of a sample of 1000 experience it) then 1:1 matching leads to a lot of the sample not being used on the analysis (in this case only 100 out of the 1000 would be used at most).  
+
+It is important to note that matching more controls to each treated unit should not logically give a more accurate estimate of the effect of treatment. Rather, the main benefit of k:1 matching is that it can increase the precision of the estimate of the treatment effect. 
+
+The availability of k:1 matching raises the question of how many controls to match to each treated unit. Austin (2010) frame this decision in terms of a variance-bias trade-off. Specifically they point out that if you increase the the number of control units you can increase the matched sample size and thereby the precision (this is the 'variance' part of the trade-off). However, this likely means that you have to match control units that are less similar to their corresponding treated units. This could make the estimate of the treatment effect less accurate (the 'bias' part of the trade-off).  They found using a simulation study that 1:1 nearest neighbour matching gave the most accurate treatment effects. Balancing various considerations they recommended that for most researchers, 1;1 or 2:1 matching (I.e., matching each treated unit to either 1 or 2 control units) is likely to the best option. 
+
+DigiCAT offers k:1 nearest neighbour matching. A slider on the 'balancing' page allows you to select the number of controls you wish to match to each treated unit. Using k:1 matching might make sense if your treatment variable is quite rare within your sample. If you choose k:1 matching, we recommend you also try 1:1 matching and compare the results to see if your conclusions are similar.  
+
+:::
+
+::: {.callout-note collapse="true"}
+#### Optimal matching 
+
+Optimal matching is a matching algorithm which creates matches based on the criterion of minimising the average dis-similarity within pairs of treated and control units. In this way it differs from nearest neighbour matching which does not necessarily optimise the overall within-pair differences. It may be helpful to check the balance achieved with optimal versus nearest neighbour matching and choose the approach that gives the best balance 
+
+:::
+
+### Balance Checking
+
+Balance checking refers to assessing whether after matching on the propensity score, treated and control units are sufficiently similar in their matching variable distributions. A large variety of methods of checking balance have been suggested. These include methods for looking at overall balance (i.e., a summary measure of balance across all matching variables) and methods for looking at balance in the individual covariates. As regards, individual covariates, originally this was done using statistical tests (e.g. a t-test or chi-square test); however, nowadays this is generally avoided since these tests depend on sample size.  Instead, measures such as standardised mean differences (SMDs) are used to quantify bias, complemented with graphical displays.  Previous studies have discussed potential SMD thresholds to decide whether balance is suitably met, with different authors proposing $|.05|$, $|.10|$, and $|.25|$. It has also been noted that lower thresholds are needed for binary matching variables to be equivalent to continuous variables $|.1|$ for binary variables is roughly equivalent to $|.25|$ for continuous variables). However, which threshold a user prefers depends on what level of imbalance a user is willing to accept (also see the discussion on calipers).  Irrespective, for transparency and to aid the interpretation of findings, it is good practice to present the SMDs for the covariates when writing up. Where there is some imbalance between the groups, adjusting for the matching variables in the outcome model can be helpful for addressing any bias due to this (see 'outcome model' section). 
+
+Both SMDs and graphical displays are implemented within DigiCAT and are provided after fitting the propensity model and implementing the matching. This allows you to inspect the quality of matches before proceeding to the outcome model. If the balance is poor, you may consider using a different method to try and get better balance. For example, you could try a different method of estimating propensity scores, switch from k:1 to 1:1 matching, or switch between nearest neighbour or optimal matching. 
+
+In terms of the output of the balancing stage DigiCAT, provides the common support graph which shows the distribution of propensity scores in the treatment and control group. When multiple imputation is used it shows the averaged distributions across all the imputed datasets. Ideally there should be a good amount of overlap between these two distributions, indicating that it is possible to identify a subset of the controls who are well-matched to the treated cases. 
+
+An observation table is also provided, which summarises the number of treated and control units before and after matching. It, therefore, shows the number of successful matches and the number of units that were discarded. The number of units are expressed in terms of the 'effective sample size' (ESS) which is relevant when there is weighting involved. This is because the number of cases might not in those cases be a good reflection of sample size.  
+
+Love plots are used to display the standardised mean differences between the treated and control groups before and after matching. The orange dots represent the difference before matching (I.e., unadjusted) while the blue dots represent the difference after matching. Ideally the latter dots should all be close to the zero line. Further, one would expect to see a reduction in the standardised mean difference after matching so that the blue dots should be closer to the zero line than the orange dots. 
+
+A balance table provides the standardised mean difference figures. Different researchers  may be willing to accept different sizes of standardised mean differences (and this may differ across contexts) and there is no one right answer as to how big is too big. Commonly suggested thresholds for standardised mean differences include magnitudes of .10 and .25. Whichever threshold is chosen, however, it is recommended that these figures are reported (perhaps as Supplementary Materials) when writing up as they capture how successfully the treated and control groups have been balanced.  
+
+### Outcome model fitting 
+
+The final step in the PSM analysis workflow is fitting the outcome model. This is actually often much simpler than estimating the propensity model. It involves fitting a linear regression model to the now-matched data with the treatment indicator as a predictor. There are also good arguments for including the matching variables in this model too. This is because it can increase the power to detect the treatment effect, help deal with remaining bias due to imperfect balancing of the treated and control groups, and address dependencies in the data due to the fact that the data are now matched. However, this might not deal with all potential bias due to remaining imbalance because the treatment might also interact with the matching variables (e.g., different genders might benefit more or less from a treatment). This means that it can be good practice to also include treatment by matching variable interactions in the outcome model too. When this is done, a 'marginal effects' method can be used to calculate the average treatment effect. This is done because the coefficient for the treatment effect in the regression model might not otherwise have a meaningful interpretation, due to the presence of the interactions in the model. 
+
+#### Marginal effects 
+
+Marginal effects provide an estimate of the difference between potential outcomes under treated and control conditions and are therefore very helpful for understanding the effect of a treatment in counterfactual analysis. In DigiCAT, marginal effects are offered for binary treatments (in PSM and IPTW) using a method known as G-computation. In general this works in the following way: the outcome model has been fit, the predicted score for each case is calculated setting treatment status = treated and treatment status = control. This provides predicted outcome values for each case for each potential outcome (i.e., as if treated and as if not treated). The mean of these estimated potential outcomes across all cases is then taken for treatment status= treated and treatment status = control. The difference between these two means gives the estimated treatment effect. For PSM where we estimate the ATT, only the potential outcomes are estimated for the treated group as the ATT is all about estimating the effect of a treatment on the treated. This means that only the contrast between the potential outcomes of the treated (not control) cases is of interest. The standard errors of the treatment effect are also calculated.  
+
+
+## IPTW
+
+Inverse propensity of treatment weighting (IPTW) is a counterfactual analysis approach that attempts to balance treated and control units through the use of weights. The first step is identical to propensity matching and involves fitting a propensity model to get propensity scores (see [propensity model estimation](#propensity-score-specification-and-estimation) above). In this model, the treatment variable is predicted by the matching variables in a model such as a logistic regression. Those scores are then transformed to provide weights. The balance of the weighted groups is then checked. Finally, the weights are used in a weighted regression. These steps are discussed in more detail below.  
+
+### Estimating weights for ATE 
+
+After a propensity model has been fit (as described earlier) the scores from that model are taken and transformed to weights for use in IPTW. Different weights can be derived to estimate the ATT versus the ATE but here we focus on the ATE which is what is currently implemented within DigiCAT. When estimating the ATE, weights are assigned to each case such that treated cases with a lower propensity of experiencing the treatment are up-weighted and control cases with a higher propensity of experiencing the treatment are up-weighted relative to other treated and control cases respectively. This is done by transforming the estimated propensity scores according to the formula: 
+
+$$
+w_{i} = Z_{i}/ e_{i} + (1-Z_{i}) /(1-e_{i}) 
+$$
+
+where $Z_{i}$ indicates whether a case was treated or not and $e_{i}$ indicates the inverse of the propensity of receiving the treatment (based on the estimated propensity score). This means that a cases weight is the inverse of the probability of receiving the treatment they actually received. This weighting scheme helps to re-balance the treated and control groups, making them more similar to each other. 
+
+### Balance Checking
+
+After estimating the IPTW weights balance checking can be used to see if the weights successfully rebalanced the treated and control groups.  This can be done by looking at the differences between the groups in their matching variables after they have been weighted through looking at group  (treated versus control) mean differences and graphical displays. Though it is not a measure of balance it is also possible to see at this stage how the weighting affected the 'effective sample size' of the data. When there is not a lot of overlap in the propensity scores of the treated and control groups, the effective sample size could be reduced quite a lot relative to the raw sample size in the unweighted data because most cases will not be very informative for a balanced comparison. 
+
+In DigiCAT, at the balancing check stay the common support graph is shown for the propensity scores. This indicates the similarity of the treated and control groups with greater overlap in the distributions being desirable. For IPTW it also shows the initial and weighted effective sample sizes to provide information about the effect of weighting.  Typically we would expect to see that the effective sample size is smaller than the original sample size after weighting. A love plot is also shown to provide a visualisation of the group differences before and after weighting. A reference line a zero or 'no difference' between the treated and control group is included. Ideally the blue dots representing the standardised mean differences between the treated and control group for each matching variable should follow this zero line closely. They should also be closer to the zero line than the orange dots representing the  standardised mean differences between the treated and control groups prior to matching. The values for the standardised mean differences before and after weighting are provided in the 'Balance Table' tab. As with propensity score matching there is no one agreed-upon magic threshold under which these values should be; however, the smaller the better and no more than .25 and ideally < .05 or .10 are good figures to have in mind when judging balance.  
+
+### Outcome model fitting  
+
+The final stage in IPTW is the outcome model fitting. This is achieved by incorporating the IPTW weights into a weighted regression model. The options are otherwise identical to those discussed under 'outcome model fitting' section for PSM. 
+
+
+## Non-bipartite (NBP) methods  
+
+The majority of matching methods available, including the other methods described in DigiCAT, are 'bipartite', which is fitting for designs with only two treatment options (one treatment group and one control group). However, in practice you may encounter a scenario in which participants may receive multiple different treatments or have different dosages of a treatment. For example, participants may adhere to one of several treatments to stop smoking or drinking – standard care, self-help and counselling-guided intervention, interactive computer programs, or a combination of these. Another scenario may be if we are investigating the number of hours of social media consumption on anxiety, for example, or the number of hours of sleep on wellbeing – in which case, the treatment is on a continuous scale, rather than dichotomous. In order to determine causal inference in such situations, nonbipartite matching methods have been suggested in place of bipartite methods.  
+
+A common example where NBP is helpful is when the treatment variable is ordinal. This may be relevant if participants receive different dosages of a treatment and the question is 'do cases that receive a higher dose have better outcomes than those who receive a lower dose?' In this case if we imagine that there are three treatment groups: 0= control, 1= moderate dose, and 2= high dose and we can assume that the distance between 0 vs 1 and 1 vs 2 is equal (I.e., we have an ordinal treatment variable) we can match cases with treatment status 0 vs 1 and 1 vs 2 on their propensity score. This allows us to estimate the effect of moving from one treatment dosage to the next highest dosage.   
+
+We do this first by estimating propensity scores using an ordinal logistic regression model (which is suitable for ordinal outcomes) and then using those scores to match  0 vs 1 and 1 vs 2 cases. The matching is done using an optimal matching method (see 'toptimal matching'). However, the particular implementation of this algorithm for NBP disallows matches between cases showing too much dissimilarity in their propensity scores. This is to enforce better balance between the treated and control groups.  
+
+After the matching of higher and lower dosage cases has taken place we then fit an outcome model using linear regression, similar to those in PSM and IPTW to the matched data. In this way the NBP workflow is very similar to the PSM workflow in DigiCAT, however, some differences should be highlighted that are a function of the fact that methods for ordinal treatments are less developed than methods for binary treatments. First, complex survey design variables are not yet implemented for these methods. Second, in the balancing output in the love plot, the matched sample standardised mean difference is displayed with the average difference across all pairwise matches. This makes it not completely analogous plots in the PSM and IPTW output. Finally, as marginal effects are not yet implemented for NBP, only two outcome model options are available: a linear regression with only the treatment variable as a predictor and a regression with the treatment variable and matching variables as covariates. This is because in the presence of treatment-matching variable interactions the regression coefficient for the treatment effect is not likely to be meaningful on its own (I.e., without computing marginal effects).  
+
+<!-- ### Conceptually, how does nonbipartite matching work? -->
+
+<!-- In the distance matrix tabulated below, we can imagine 6 different groups (termed 'nodes', in graph theory) that may be matched with one another. Some groups, such as 3 and 4, cannot be matched with one another, as the distance between them is an 'infinite distance'.   -->
+
+<!-- Optimal matching would aim to create a matching consisting of 3 pairs, which the overall smallest total distance. Thus, matching result for the example below would be pairs of 1 and 6, 2 and 4, and 3 and 5, which would give a total overall distance of 30, the smallest achievable (10 + 10 + 10). Although, for instance, nodes 1 and 2 have an even smaller distance (of just 1), this would mean the remaining pairs to be matched would yield a greater overall distance, as node 6 would be left to match either with 4 or 5 (note it cannot be matched with 3 as it is of infinite distance), which have greater distances (100), and so the overall distance would not be the smallest possible.   -->
+
+<!-- This is demonstrative of where optimal matching is superior to greedy matching, which would match nodes by proximity, but not consider overall distance and not yield the global optimal solution. In this instance, the 6 groups cannot be clustered into two, and therefore a nonbipartite algorithm should be used in place of bipartite algorithms.  -->
+
+<!-- | Node | 1   | 2   | 3   | 4   | 5   | 6   | -->
+<!-- | ---- | --- | --- | --- | --- | --- | --- | -->
+<!-- | 1    | $\infty$   | 1   | $\infty$   | 2   | $\infty$  | 10  | -->
+<!-- | 2    | 1   | $\infty$   | 2   | 10  | 100 | $\infty$   | -->
+<!-- | 3    | $\infty$   | 2   | $\infty$   | $\infty$   | 10  | $\infty$   | -->
+<!-- | 4    | 2   | 10  | $\infty$   | $\infty$  | 30  | 100 | -->
+<!-- | 5    | $\infty$   | 100 | 10  | 30  | $\infty$  | 100 | -->
+<!-- | 6    | 10  | $\infty$   | $\infty$   | 100 | 100 | $\infty$   | -->
+
+
+<!-- Although nonbipartite matching can also be used with multiple unordered groups and time varying covariates, in DigiCAT it currently focuses on matching with multiple ordinal dose groups, specifically, and should not be interpreted as otherwise unless stated. In this scenario, the general steps would be as follows: first, generate propensity scores through an ordinal logit model, and then leverage these propensity scores to measure distances between participants. Following calculation of the distances, optimal nonbipartite matching would be performed to match participants possessing similar pre-treatment characteristics. Note, it is assumed that matching variables are the only variables that influence treatment assignment.   -->
+

@@ -1,5 +1,5 @@
 ---
-title: "1. Using DigiCAT"
+title: "2. Using DigiCAT"
 editor_options: 
   chunk_output_type: console
 ---
@@ -158,3 +158,37 @@ Such consultation can also **assist in the presentation of data, and co-producti
 Lived experience experts should also be consulted on **the dissemination and use of data and findings.** Collaboration with lived experience experts increases credibility and practical reliability and applications of research findings.  
 
 When they were asked whether it is **important to engage youths with lived experience in research**, our young experts told us that it is crucial to engage them in all stages of it. One young person stated: "Adults were kids once as well, but I think, feel that since social media is involved that it's changed a lot. So, they still had the same problems, but now there are also different things and those things could be changed to make it better." They suggested that this could be done via online advisory groups, dedicated apps that would gather young people's input or surveys.   
+
+
+## Counterfactual Analysis and FAIR principles
+
+### How can I make my research open?
+
+Open research refers to the practice of making research methods and materials as open as possible. The aim of open research is to maximize the public benefit of research based on the principle that the wider information is shared, the more benefit it provides. While the application of open research practices can vary between research subjects, it is still relevant to all researchers in every discipline. Among the eight pillars of open science, [as defined by The European Commission](https://research-and-innovation.ec.europa.eu/strategy/strategy-2020-2024/our-digital-future/open-science_en){target="_blank"}, are FAIR Data, Research Integrity and Citizen Science which are described below, along with some guidance on how these foundations can be implemented to promote open research when using DigiCAT.
+
+### FAIR Data
+
+In 2016, Wilkinson et al. published a set of guiding principles aimed at promoting the reuse of digital assets, such as research data and software: [https://www.nature.com/articles/sdata201618](https://www.nature.com/articles/sdata201618){target="_blank"}. The four guiding FAIR principles (**F**indability, **A**ccessibility, **I**nteroperability and **R**eusability) describe how research output should be organized and shared to maximize their use. 
+ 
+- **Findable:** Making research outputs discoverable is critical for their reuse. Findability can be promoted by providing metadata (information on research outputs, such as associated keywords.  
+- **Accessible:** After the material has been found, other researchers need to know how they can access it. In some cases, data and software can be openly available, but authentication may also be required.  
+- **Interoperable:** Reuse of materials is supported by maximizing the capacity of data and software to be integrated with other materials, in terms of information retention and difficulty.  
+- **Reusable:** Ensuring data and software are well described will enable its reuse. Publishing accompanying metadata, such as a README file, will better enable material to be extended by other researchers.  
+ 
+If you would like to know more about applying the FAIR principles to your study, an in-depth guide has been provided by [GO FAIR](https://www.go-fair.org/go-fair-initiative/){target="_blank"}.
+
+### Research Integrity
+
+Research should comply with standards of honesty, respect, transparency, and accountability. Examples of open science practices that promote research integrity are:
+
+Preregistration: We recommend registering your research plan before using DigiCAT to conduct your own counterfactual analysis. This involves outlining your hypotheses and analysis plan prior to data collection and analysis. Registering your research plan demonstrates that your work is credible and has lasting reproducibility. [OSF (Open Science Framework)](https://osf.io/){target="_blank"} provides a free and open platform to register your research plan, which offers a variety of templates to accommodate your research question and materials. 
+
+**Open materials:** Sharing the materials used to conduct your research increases its transparency and reproductivity. An example of how materials can be made open when using DigiCAT is the publication of DigiCAT code used to carry out your counterfactual analysis (from the “Get R Code” tool feature) on open-source platforms, such as [Git Hub](https://github.com/){target="_blank"}. 
+
+**Open access:** We recommend you choose an open-access journal when publishing results obtained using DigiCAT. This ensures your work can be accessed by anyone, with no restrictions. Open access promotes the impact, reproducibility and accessibility of your work.
+
+### Citizen Science
+
+Citizen science is used to describe any type of public involvement in scientific research where researcher and communities work together to address knowledge gaps. There are many benefits to conducting citizen science, including the more meaningful application of research to real-world issues and increased public interest and awareness of research. If you would like to know more about incorporating this in your own research, Wellcome have outlined a [step by step guide to public engagement for researchers](https://wellcome.org/sites/default/files/planning-engagement-guide-wellcome-nov14.pdf){target="_blank"}.
+
+

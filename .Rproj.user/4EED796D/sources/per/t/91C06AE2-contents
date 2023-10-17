@@ -1,0 +1,15 @@
+---
+title: "DigiCAT Tutorials"
+---
+
+<iframe src="https://media.ed.ac.uk/embedplaylist/secure/embed/v2/1/playlistId/1_y9kr4jj9/uiConfId/32949671" width="740" height="330" allowfullscreen webkitallowfullscreen mozAllowFullScreen allow="autoplay *; fullscreen *; encrypted-media *" referrerpolicy="no-referrer-when-downgrade" sandbox="allow-forms allow-same-origin allow-scripts allow-top-navigation allow-pointer-lock allow-popups allow-modals allow-orientation-lock allow-popups-to-escape-sandbox allow-presentation allow-top-navigation-by-user-activation" frameborder="0" title="DigiCAT video guides"></iframe>
+
+## Overview of tutorials
+
+Welcome to the tutorial pages for DigiCAT! The tutorials provide information on what counterfactual analysis is, why it can be useful, and how to do it using DigiCAT. These pages are designed to be accessible to those with minimal experience of counterfactual analysis. As such, where we provide technical details, we have also endeavoured to provide a translation; a ‘what does this mean?’. If after reading through the tutorials you crave more information on counterfactual analysis you can check out the further reading. 
+
+## How to engage with tutorials
+
+The tutorials are structured such that users can read only a sub-section of the sections relevant for their analysis and tailored to their level of background knowledge.  
+
+If you are a first-time user of counterfactual analysis we recommend reading the section on [Introduction to counterfactual analysis](https://uoe-digicat.github.io/01_introcf.html). If you need some help choosing a counterfactual analysis approach, we recommend reading [choosing a counterfactual analysis approach](https://uoe-digicat.github.io/03_choosecf.html). If you are already confident in your knowledge of counterfactual analysis and know which approach you would like to implement you can go directly to the relevant tutorial sections for information on how it is implemented in DigiCAT. There are specific sections for currently implemented methods, which are: propensity score analysis (with 1:1 and k:1 matching), propensity score weighting, and non-bipartite propensity score analysis. All of these method can be used with survey design variables and with either multiple imputation, weighting, or complete case analysis to deal with missing data. These also have their own sections in the tutorials.  

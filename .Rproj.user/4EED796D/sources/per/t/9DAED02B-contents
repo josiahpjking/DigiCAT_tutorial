@@ -1,0 +1,35 @@
+---
+title: "Acknowledgements & Further reading"
+---
+
+## DigiCAT features in development 
+
+The following features are currently in development or planned for incorporation soon: 
+
+- Machine learning propensity score estimation methods (generalised boosting models and random forest) 
+- Counterfactual analysis for continuous and nominal treatments 
+- Counterfactual analysis for binary outcomes 
+- Marginal effects workflow for ordinal treatment variables 
+- More options for multiple imputation 
+- More options for IPTW (including ATT estimation and weight stabilisation) 
+
+
+## Acknowledgements  
+
+We are grateful to the Wellcome Trust for funding the Discovery and Prototyping phases of the development of DigiCAT. Our thanks also go to the many who contributed to DigiCAT in various ways. We are grateful to the young person advisory groups (YPAGs) who provided invaluable insights and help guide the direction of DigiCAT, to the users who responded to our user survey and to the group members who provided feedback on iterations of the tool.  
+
+## Further Reading
+
+ - Austin, Peter C., Nathaniel Jembere, and Maria Chiu. 2016. “Propensity Score Matching and Complex Surveys.” Statistical Methods in Medical Research 27 (4): 1240–57. https://doi.org/10.1177/0962280216658920.  
+
+- Austin, P. C., & Stuart, E. A. (2015). Moving towards best practice when using inverse probability of treatment weighting (IPTW) using the propensity score to estimate causal treatment effects in observational studies. Statistics in Medicine, 34(28), 3661–3679. 
+
+- Caliendo, M., & Kopeinig, S. (2008). Some practical guidance for the implementation of propensity score matching. Journal of economic surveys, 22(1), 31-72. 
+
+- de Vries, B. B. P., & Groenwold, R. H. (2017). A comparison of two approaches to implementing propensity score methods following multiple imputation. Epidemiology, Biostatistics, and Public Health, 14(4). 
+
+- Desai, R. J., & Franklin, J. M. (2019). Alternative approaches for confounding adjustment in observational studies using weighting based on the propensity score: A primer for practitioners. Bmj, 367. 
+
+- Lenis, David, Trang Quynh Nguyen, Nianbo Dong, and Elizabeth A. Stuart. 2019. “It’s All about Balance: Propensity Score Matching in the Context of Complex Survey Data.” Biostatistics 20 (1): 147–63. https://doi.org/10.1093/biostatistics/kxx063. 
+
+- Lu, B., Greevy, R., Xu, X., & Beck, C. (2011). Optimal nonbipartite matching and its statistical applications. The American Statistician, 65(1), 21–30. 

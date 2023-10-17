@@ -1,0 +1,133 @@
+---
+title: "5. Missing Data"
+---
+
+## Intro to missing data
+
+It's likely that your data will be subject to non-response, and therefore contain missing values. Units (participants, patients) may be selected into your sample but refuse to take part in your survey, they may shy from answering certain questions, and there may be defective measures, deletion of outliers, or a 'missing by design' approach.   
+
+However, to handle missingness assumptions must be made regarding the process or cause of nonresponse, in addition to model assumptions. The simplest solution is of course to limit the occurrence of missingness. However, where this is not possible, there are some options which DigiCAT employs to help you navigate this situation to facilitate your counterfactual analysis.
+
+## Unit/item non-response
+
+You may hear of a distinction between 'unit' and 'item' nonresponse. Unit nonresponse would refer to a situation in which entire units are not observed – they may refuse to take part in your survey; item nonresponse would refer to a sampled unit that responds to some but not all questions or measures. Although there is ambiguity – unit nonresponse may be considered an extreme version of item nonresponse, and as such can be treated via the same techniques. However, in practice, chosen techniques may be tailored to treat item or unit nonresponse.  
+
+## Patterns
+
+You should consider the pattern of missingness in your data when justifying your theory and application of techniques to account for missing values. Below we briefly describe common missing data patterns.
+
+**Univariate missing pattern:** If you have two variables, and one is completely observed whilst the other contains missing values, this would be illustrative of a univariate missing data pattern. This would remain the same if we had more than two variables – if we had five variables, and only one was not completely observed, we would have a univariate missing data pattern.  
+
+**Monotone missing pattern:** Unlike univariate missing data, monotone missing data describes a situation in which we have more than one variable with missing values. A monotone missing data pattern can be demonstrated if, once a missing value occurs in one row of a variable, all subsequent values in that row are missing too. This is commonly found in longitudinal, or panel, data. A univariate missing pattern is often considered a special case of a monotone missing pattern.
+
+**Block/file-matching missing pattern:** this pattern is frequently obtained via multiple matrix sampling/split questionnaire designs. In this pattern, any observed data point can be reached via another observed data point through a series of vertical/horizontal moves.  
+
+**Arbitrary missing pattern:** Perhaps the most common pattern, an arbitrary pattern can be illustrated if we consider two variables (X1, X2), and for some units X1 is observed but X2 is missing, and for other units X2 is observed but X1 is missing.
+
+## Missing data mechanisms
+
+The missing data mechanism (MDM) is the process generating the binary response variable that tells us whether values of the variables within our dataset are observed or not.  
+
+**Missing Complete at Random (MCAR):** If the probability of missingness is equal for all cases, data are 'missing completely at random', and this suggests that the cause of unobserved values is not associated with the data – whether our values are observed or not does not depend on our data.  
+
+- Example scenario: Say we have two variables, X1 and X2, and we assume that X1 is not completely observed (there are missings) but X2 is (there are no missings). The X1 variable would be considered MCAR if the probability of observing or not observing X1 is the same for all possible values of variable X2 and all observed X1 variables.  
+
+**Missing at Random (MAR):** If the probability of missingness is equal for all cases within groups defined by observed data, the data are said to be 'missing at random'. That is, if the probability of missingness depends on the observed, not unobserved, data.  
+
+- Example scenario: Let's take our earlier variables, X1 and X2, and assume they are negatively correlated. For illustration, X1 may represent annual income, whilst X2 may represent family size. If those units with a smaller family size are more likely to not complete the annual income question, then missing annual income (X1) values would be considered MAR.  
+
+**Missing Not at Random (MNAR):** The most complex missing mechanism to consider, missing not at random describes the situation in which the probability of missingness varies according to an unknown.  
+
+- Example scenario: Demonstrated once again by our X1 and X2 variables, if individuals with a high X1 value (e.g., high annual income) tend to not complete the X1 (annual income) question, even within households with the same family size (X2), then missing values would be MNAR.
+
+Assumptions about these missing data mechanisms are critical in deciding how to handle your missing data problem. You should note that the MDM may vary over variables and units within your dataset. For instance, one variable may be assumed MCAR, whilst another may be MNAR.  
+
+Most simple or quick fixes assume, often unrealistically, that data are MCAR. If this assumption is breached, analyses will provide biased inferences. There exist some techniques to probe the MDM and assumptions, such as Little's MCAR test (only applicable to quantitative data), inspection of missingness patterns, and descriptive information. For example, proportions of missingness per variable may help to crudely examine the amount of missing information – the higher the amount of missingness, the heavier the weight ascribed to the correctness of MDM assumptions and thus the method used to handle this missingness. Assessment of missing data patterns may aid us in deciding which handling technique to select and visualisations may inform us whether the MDM is selective or not. However, unfortunately there is little available to help decipher if data are MAR or MNAR, and this assumption rests on empirical results and theory.  
+
+
+
+## Approaches available in DigiCAT
+
+### Complete case analysis  
+
+If your dataset contains missing values, standard software that is intended to perform complete-data analyses may either stop processing and present an error message, or analyse only the completely observed cases; they are seldom prepared to handle datasets with missingness. Therefore, as in the case of the latter example, the software may perform pragmatic decisions, without theoretical justification, in order to allow your analysis to proceed. However, in cases such as this, your inferences may be invalid. Perhaps the most common ad-hoc method, as described here, is complete case analysis (CCA), in which only the completely observed cases are entered into the analysis. CCA will yield valid inferences if the MDM is MCAR, as the observed values would therefore be considered a random sample from the complete dataset. Yet, as we known from our knowledge on assumptions, generally CCA may lead to invalid inferences if missing values are MAR or MNAR.  
+
+### Non-response weighting  
+
+Many datasets include non-response weights or 'attrition' weights that can be used to deal within missing data under a 'missing at random' (MAR) assumption (see above for the definition of MAR). These weights account for bias due to unit- or case-wise non-response by up-weighting cases that were unlikely to be observed in the sample and down-weighting those that were highly likely to be observed in the sample. This helps to make the sample more similar to the underlying 'complete' sample of people who are and aren't missing. It does so by incorporating non-response weights in a weighted regression in the same way as sampling weights are incorporated within complex sampling designs (see 'complex survey data'). 
+
+### Multiple imputation
+
+When we refer to imputation, we refer to the process in which we replace missing values in our dataset with plausible values that may have been observed. Unlike the methods discussed above, imputation allows us to make use of all of our data, and to use standard methods, designed for complete-data analysis. For example, if we had a variable, 'height', which contained a missing value, we may replace it with a single plausible value – such as the mean of the non-missing values for this variable. This would be an example of a single imputation method. However, in practice our variables likely associate, and we must further acknowledge that there is some degree of uncertainty about our estimate (we are not 100% sure our imputed value is the true value). Single imputation methods do not account for these factors.
+
+However, an approach that does recognise this uncertainty is 'multiple imputation' (MI). MI acknowledges this uncertainty by creating multiple versions of imputed datasets, with each dataset representing one possible complete dataset, with different estimates of the missing values. Generally, these estimates are the result of a regression model, in which incomplete variables are the outcome, and complete variables are predictors. An iterative algorithm employs Bayesian estimation to update these regression parameters, to ensure that imputations are not drawn from one single set, and that new estimates generate each set of imputations.  
+
+We can choose how many datasets (often noted 'm') to create; the default in DigiCAT is m = 5. Here, we would create 5 datasets, and each dataset would be analysed separately. This would result in 5 regression models, for example. In order to get our final set of results in the form of one single inference, we would combine (pool) the results (e.g., estimates, standard errors) of our 5 models using what is known as Rubin's rules. This gives us our model estimates by averaging the separate coefficients, and allows us to observe the uncertainty within and across imputations, via confidence intervals.
+
+
+
+::: {.callout-note collapse="true"}
+#### Caveats  
+
+MI is often denoted as a gold-standard method of handling missingness. However, if the imputations are poorly constructed, the validity of the results will be questioned. MI, although elegant in its simplicity and now commonly used, remains a complex method. As such, it can be difficult to spot nuances of a poor imputation model. However, there are some quick ways to check if your imputations have gone wrong. These techniques include checking the convergence of your imputation models, usually in the form of spaghetti plots, and examining the distributional discrepancy (either graphically or via descriptive statistics), which is the difference in the distribution of imputed values against the distribution of observed values. Although the nature of the MAR mechanism would elicit some differences between observed and imputed data, anything overly dramatic unaccounted for by the data features would indicate misspecification of the imputation model. These diagnostics can be obtained from DigiCAT, in addition to a guide on how to interpret them, below.   
+
+:::
+
+::: {.callout-note collapse="true"}
+#### Practical Considerations
+
+Useful questions to ask:  
+
+- In my dataset, what percentage of units have data available for all variables in the analysis model?
+- If I used another method, such as complete case analysis, how much data would be discarded?
+- What patterns does my missing data follow? Are they regular?
+- Would my analysis benefit from MI? Is it appropriate? 
+
+If, after consulting your data, you believe MI would be an appropriate next step, you must then consider developing the imputation model that will generate your imputations. A common question may be "what variables should I include?":  
+
+- Guidance within the MI literature would implore you to include at least all the variables from the intended analysis in the imputation model, in order to preserve the relationship between variables of interest.
+- If possible, it is recommended that you also include variables that are not in the analysis model (termed auxiliary variables). For example, if you have access to repeated measurements of variables in your analysis model, these could be appropriate auxiliary variables, as they would correlate with incomplete variables, and aid the imputation model in predicting the missing values. These can be included in DigiCAT by selecting them as 'additional covariates'.  
+- Research also would advocate for inclusion, if possible, of predictors of missingness in the imputation model to improve MAR assumption plausibility and reduce the demand to adjust for MNAR mechanisms.
+
+By default, DigiCAT will, by default, aim to include all the data you upload in the imputation model. The algorithm employed ( MICE – multivariate imputation by chained equations) will provide a 'predictor matrix', and the default setting is that each variable predicts all others. If, however, the algorithm detects multicollinearity in your data, it will automatically aim to resolve this issue via removal of one (or more) predictors.  If this occurs, the event will be 'logged', and you may request both the logged events and the predictor matrix of your imputations from DigiCAT.   
+
+So, you may now have an idea of what variables to include in your imputation analysis. Your next question may be **"what model should I use?"**  
+
+The method leveraged in DigiCAT uses random forest as an 'imputation model' to guess what the missing values would have been had they been observed. Random forest is a type of machine learning method that produces and aggregates the results of lots of decision trees and has the advantage of tending to perform better than traditional regression methods for prediction. In multiple imputation models it has the advantage of being able to approximate non-linear functions so it reduces the dependence on having to correctly specify the imputation model. In general, these defaults are well-informed and may cover your data well. However, in some cases, another method may be superior. For further reading, you may consult the provided references to learn more about other methods which may better suit the needs of your data.
+
+**"How many imputed datasets do I need?"**  
+
+In DigiCAT, the number of imputed datasets (m) is set to 5 by default, in order to accept a wide range of datasets, without being too computationally demanding. However, you may wish to alter m, based on the amount of missings. There is no definitive number for m, however, many guidelines and rules of thumb have been suggested, which we cover below. If you wish to increase m beyond this limit, we implore you to download the R script at the end of the analysis and re-run it with more imputed datasets on your own machine.  
+
+Why would you want to adjust m? Essentially, as imputed estimates are derived from a random sample of m datasets, the estimates include random sampling variation (imputation variation). This means that estimates from m datasets are variable (thus may be considered inefficient and non-replicable), in comparison to asymptotic estimates generated if the data were imputed an infinite number of times. These issues can be reduced by increasing m.  
+
+Historically, as few as 3-10 imputations have been considered sufficient. However, this may be specific to point estimates only; if we also want to obtain replicable standard error (SE) estimates, this often may need to be increased, and some suggestions stretch as far as m = 200.  
+
+<!-- A recent two-step approach to approximating m can be tailored to your data and may provide an efficient way of deciding m, proposed by Von Hippel, below:   -->
+
+<!-- $$ -->
+<!-- M = 1 + \frac{1}{2} \left( \frac{FMI}{CV(SE)} \right) -->
+<!-- $$   -->
+
+<!-- FMI is the fraction of missing information – that is, the fraction by which the squared SE would shrink if the data were complete.    -->
+
+<!-- CV() is a coefficient of variation – that is, the percentage by which you'd be willing to accept the SE change if the data were re-imputed. -->
+
+<!-- However, there are some caveats to note to calculate this appropriately, and users should read the recommended references and further reading if they wish to follow up on this approach.   -->
+
+<!-- A third alternative approach to estimate m is termed iterative multiple imputation. Here, you would keep increasing m until estimates converge, or variation becomes negligible with the addition of further datasets.   -->
+
+<!-- "How many iterations do I need?"   -->
+
+<!-- It's important that all imputations for all variables reach convergence, and this can be visually identified via inspection of convergence plots. To reach convergence, generally 20-30 iterations are needed, or even less. The default in DigiCAT is 20. You may examine convergence via requesting spaghetti plots in DigiCAT.    -->
+
+<!-- [which links to... diagnosis and evaluation of imputations]   -->
+
+<!-- -	Reading convergence plots -->
+<!-- -	Examining imputed values -->
+<!-- -	Distributional discrepancy/comparisons between observed versus imputed data -->
+<!-- -	Regression diagnostics - residuals -->
+<!-- -	Cross-validation -->
+<!-- -	PPC  -->
+
+:::

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>DigiCAT Tutorials - 2. Introduction to Counterfactual Analysis</title>
+<title>DigiCAT Tutorials - 1. Introduction to Counterfactual Analysis</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -87,7 +87,7 @@ if(f.classList.contains('fa-hand-o-right')) {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_introcf.html">2. Introduction to Counterfactual Analysis</a></li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./01_introcf.html">1. Introduction to Counterfactual Analysis</a></li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -121,13 +121,13 @@ if(f.classList.contains('fa-hand-o-right')) {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./01_introcf.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text">2. Introduction to Counterfactual Analysis</span></a>
+ <span class="menu-text">1. Introduction to Counterfactual Analysis</span></a>
   </div>
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./02_howto_digicat.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">1. Using DigiCAT</span></a>
+ <span class="menu-text">2. Using DigiCAT</span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -173,6 +173,7 @@ if(f.classList.contains('fa-hand-o-right')) {
   <li><a href="#what-is-counterfactual-analysis" id="toc-what-is-counterfactual-analysis" class="nav-link active" data-scroll-target="#what-is-counterfactual-analysis">What is counterfactual analysis?</a></li>
   <li><a href="#what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis" id="toc-what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis" class="nav-link" data-scroll-target="#what-kind-of-research-questions-can-be-answered-with-counterfactual-analysis">What kind of research questions can be answered with counterfactual analysis?</a></li>
   <li><a href="#why-not-just-adjust-for-covariates-in-regression" id="toc-why-not-just-adjust-for-covariates-in-regression" class="nav-link" data-scroll-target="#why-not-just-adjust-for-covariates-in-regression">Why not just adjust for covariates in regression?</a></li>
+  <li><a href="#what-counterfactual-analysis-approaches-are-offered-in-this-tool" id="toc-what-counterfactual-analysis-approaches-are-offered-in-this-tool" class="nav-link" data-scroll-target="#what-counterfactual-analysis-approaches-are-offered-in-this-tool">What counterfactual analysis approaches are offered in this tool?</a></li>
   </ul>
 </nav>
     </div>
@@ -181,7 +182,7 @@ if(f.classList.contains('fa-hand-o-right')) {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">2. Introduction to Counterfactual Analysis</h1>
+<h1 class="title">1. Introduction to Counterfactual Analysis</h1>
 </div>
 
 
@@ -228,7 +229,10 @@ if(f.classList.contains('fa-hand-o-right')) {
 </section>
 <section id="why-not-just-adjust-for-covariates-in-regression" class="level2">
 <h2 class="anchored" data-anchor-id="why-not-just-adjust-for-covariates-in-regression">Why not just adjust for covariates in regression?</h2>
-<p>Perhaps the most widely used approach to attempting to deal with confounding is to adjust for potential confounding within a regression or ANOVA-type model. This approach should be described as ‘conditional adjustment’. However, counterfactual analysis provides a more principled method that places causal inference at the fore. Importantly, it includes steps to check and ensure good covariate balance has been achieved. This is not guaranteed and may fail in traditional covariate adjustment approaches, leading to biases when trying to understand the causal effect of a treatment without any warning signs for the user. Further, counterfactual analysis provides a way of more clearly defining the target population about which inferences are being made. It can also readily incorporate a very large number of covariates. None of this comes at the cost of Interpretability when using methods like propensity matching or weighting. In DigiCAT in particular, both methods use a linear regression for the outcome model so the interpretation of the treatment effect is no more complicated than in a traditional regression model. ## What counterfactual analysis approaches are offered in this tool?</p>
+<p>Perhaps the most widely used approach to attempting to deal with confounding is to adjust for potential confounding within a regression or ANOVA-type model. This approach should be described as ‘conditional adjustment’. However, counterfactual analysis provides a more principled method that places causal inference at the fore. Importantly, it includes steps to check and ensure good covariate balance has been achieved. This is not guaranteed and may fail in traditional covariate adjustment approaches, leading to biases when trying to understand the causal effect of a treatment without any warning signs for the user. Further, counterfactual analysis provides a way of more clearly defining the target population about which inferences are being made. It can also readily incorporate a very large number of covariates. None of this comes at the cost of Interpretability when using methods like propensity matching or weighting. In DigiCAT in particular, both methods use a linear regression for the outcome model so the interpretation of the treatment effect is no more complicated than in a traditional regression model.</p>
+</section>
+<section id="what-counterfactual-analysis-approaches-are-offered-in-this-tool" class="level2">
+<h2 class="anchored" data-anchor-id="what-counterfactual-analysis-approaches-are-offered-in-this-tool">What counterfactual analysis approaches are offered in this tool?</h2>
 <p>DigiCAT currently offers several broad approaches to counterfactual analysis: propensity score matching for binary (traditional propensity score analysis) and ordinal treatment variables (non-bipartite optimal matching) and propensity score weighting for binary variables (inverse propensity of treatment weighting; IPTW). Propensity score matching for binary treatments is based on matching treated and control units with similar propensity scores to achieve balance between treated and control groups. Propensity weighting for binary treatments also uses a propensity score but transforms it into a weight that is used in a weighted regression. The weighted regression up-weights some cases and down-weights others to achieve balance between the treated and control groups. Non-bipartite propensity scoring estimates a propensity score based on treating the treatment variable as ordinal and then matches cases that have similar propensity scores but different treatment levels. We also have several features that are planned for incorporation in the future.</p>
 <p>We are continuing to develop DigiCAT to make more approaches available. These are listed under <a href="https://uoe-digicat.github.io/07_further.html">features in development</a>. Feel free to get in touch <a href="mailto:uoe_digicat-group@uoe.onmicrosoft.com">uoe_digicat-group@uoe.onmicrosoft.com</a> if you have suggestions for approaches you would like to see within the tool.</p>
 

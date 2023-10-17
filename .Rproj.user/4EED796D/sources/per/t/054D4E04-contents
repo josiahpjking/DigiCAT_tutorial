@@ -1,0 +1,40 @@
+project:
+  type: website
+  render:
+    - "*.qmd"
+    - "!todo/*"
+  output-dir: docs/
+
+website:
+  title: "DigiCAT Tutorials"
+  sidebar:
+    style: "floating"
+    search: true
+    collapse-level: 1
+    contents:
+      - index.qmd
+      - 01_introcf.qmd
+      - 02_howto_digicat.qmd
+      - 03_choosecf.qmd
+      - 04_cfmethod.qmd
+      - 05_missing.qmd
+      - 06_survey.qmd
+      - 07_further.qmd
+    # right:
+    #   - text: "About"
+    #     menu:
+    #     # - text: "CSS TESTS"
+    #     #   href: csstests.html
+
+
+format:
+  html:
+    toc: true
+    toc_float: true
+    theme:
+      - united
+      - assets/style-labs.scss
+    include-in-header: "assets/toggling.html"
+    number-sections: false
+
+

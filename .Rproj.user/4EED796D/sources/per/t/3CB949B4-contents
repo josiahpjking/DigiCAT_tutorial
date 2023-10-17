@@ -1,0 +1,32 @@
+---
+title: "3. Choosing a Method"
+---
+
+## Ordinal vs Binary Treatments  
+
+DigiCAT offers counterfactual analysis for different types of treatment variables. Binary treatment variables (where people either experience a treatment or not) can be analysed using propensity matching or weighting (IPTW). Ordinal treatment variables (where people might experience a treatment to different degrees) can be analysed using optimal non-bipartite propensity matching. DigiCAT will try to detect what type of treatment variable you have and if it has only two categories it will assume it is binary. If it has 3-5 categories it will assume it is ordinal.  
+
+## Matching vs Weighting  
+
+Matching and weighting approaches are both available for binary variables. Matching can be used to estimate the ATT and weighting can be used in DigiCAT to estimate the ATE. As such, your research question (and whether it concerns the effect of a treatment in the treated or whole population) should be your primary guide your choice of matching versus weighting. There are; however, also some other differences between matching and weighting that may be considered. For example, weighting uses the whole sample, whereas matching (depending on which method is used) might result in some unmatched cases being unused. Weighting can, therefore, have advantages when the treatment is rare or the overall sample size is small. More details on these methods are provided below.  
+
+Note that though DigiCAT implements weighting and matching, reflecting the most common ways I which propensity scores are used, these are not the only way they can be used in counterfactual analysis.  For example, stratification on the propensity score is also sometimes used and sometimes (though we do not necessarily recommend it), the propensity score is used as a covariate in a regression as form of counterfactual analysis. DigiCAT will in the future also offer the option to save out estimated propensity scores so that they can be used in other ways. This also allows the scores to be used in more complex analyses that are not offered in DigiCAT, for example, using them in a structural equation model. We are grateful to the member of our user group who suggested adding this feature. 
+
+## Complete case versus multiple imputation versus weighting for missing data  
+
+There are several options for dealing with missing data available in DigiCAT: complete case analysis, multiple imputation, and weighting. Complete case analysis should be selected when you have no missing data. It is also justifiable to use it if you are confident that there is no relation between missingness and the variables you have in your model or between the missingness and the missing values of the outcome variable. Weighting is a good option for dealing with case-level missing data, i.e., some people are completely missing at a time-point. This could happen if you have longitudinal data with your matching, treatment, and outcome variables measured at sequential time-points. If you have an attrition weight for the last time-point you could use it with missingness weighting to deal with any non-random drop-out between your baseline and outcome point. Finally, multiple imputation can be used to deal with case and variable-level missingness. However, it can take a long time to run so users with large datasets and large numbers of matching variables and/or additional covariates should be aware of this. More details on the missingness methods are provided below.
+
+
+## The benefits of sensitivity analyses   
+
+There are a lot of subjective decision points in counterfactual analysis, such as which matching variables to include, which additional covariates to include (if any), which missingness approach to use for missing data and whether to match or weight by a propensity score.  While there have been a lot of advancements in recent years in our understanding of what best practice for implementing counterfactual analysis looks like, it is not always the case that there is one 'best approach'. Sometimes it depends. Sometimes it's still debated or there isn't a lot of evidence to guide a decision. As such, we recommend where relevant using multiple different approaches and checking whether you get similar results with different approaches. If you do, this helps increase confidence in your findings. If your results differ a lot across approaches then the nature of the differences might be illuminating. For example, if you find that PSM is non-significant but IPTW is significant this may be because the latter uses more of the data (e.g., if the treatment and control groups are very different). Provided IPTW successfully balances the groups, it could suggest that IPTW is more suitable for these data.  
+
+
+::: {.callout-note collapse="true"}
+#### Technical background to counterfactual analysis
+
+The potential outcomes framework Counterfactual analysis is based on what is known as the 'potential outcomes' framework which was formalised by Rubin. It is based on the notion that for each unit exposed to a treatment W $(W_i = 1)$ there is a potential outcome $(W_i = 0)$ where they weren't exposed to that treatment. It is assumed that each unit assigned to the treated and control groups have 'potential outcomes' in both states but only one of these states is observed. Within the potential outcomes framework, a causal effect of a binary treatment is defined as the difference between these potential outcomes. Counterfactual analysis methods have to solve the problem that only one of these potential outcomes is observed for each individual.  
+
+The methods in DigiCAT are based on the potential outcomes framework and therefore carry certain assumptions inherited from the framework. A major one is the stable unit treatment assumption (SUVTA) which means that the potential outcomes for any unit does not depend on the treatment assignment of any other units. This means that there is no interference between units. Another important one is that there are no unmeasured/unmodelled confounders that are associated with the potential outcomes and with treatment assignment. Other assumptions associated with specific counterfactual analysis workflows are discussed with each method. 
+
+:::

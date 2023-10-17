@@ -1,5 +1,5 @@
 ---
-title: "2. Introduction to Counterfactual Analysis"
+title: "1. Introduction to Counterfactual Analysis"
 ---
 
 ## What is counterfactual analysis?
@@ -35,6 +35,7 @@ In fact, as DigiCAT was originally developed for mental health researchers we as
 ## Why not just adjust for covariates in regression?  
 
 Perhaps the most widely used approach to attempting to deal with confounding is to adjust for potential confounding within a regression or ANOVA-type model. This approach should be described as 'conditional adjustment'. However, counterfactual analysis provides a more principled method that places causal inference at the fore. Importantly, it includes steps to check and ensure good covariate balance has been achieved. This is not guaranteed and may fail in traditional covariate adjustment approaches, leading to biases when trying to understand the causal effect of a treatment without any warning signs for the user. Further, counterfactual analysis provides a way of more clearly defining the target population about which inferences are being made. It can also readily incorporate a very large number of covariates. None of this comes at the cost of Interpretability when using methods like propensity matching or weighting. In DigiCAT in particular, both methods use a linear regression for the outcome model so the interpretation of the treatment effect is no more complicated than in a traditional regression model. 
+
 ## What counterfactual analysis approaches are offered in this tool? 
 
 DigiCAT currently offers several broad approaches to counterfactual analysis: propensity score matching for binary (traditional propensity score analysis) and ordinal treatment variables (non-bipartite optimal matching) and propensity score weighting for binary variables (inverse propensity of treatment weighting; IPTW). Propensity score matching for binary treatments is based on matching treated and control units with similar propensity scores to achieve balance between treated and control groups. Propensity weighting for binary treatments also uses a propensity score but transforms it into a weight that is used in a weighted regression. The weighted regression up-weights some cases and down-weights others to achieve balance between the treated and control groups. Non-bipartite propensity scoring estimates a propensity score based on treating the treatment variable as ordinal and then matches cases that have similar propensity scores but different treatment levels. We also have several features that are planned for incorporation in the future. 
